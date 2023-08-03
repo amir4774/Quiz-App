@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.btn {
+    transition: background-color 0.5s;
+}
+
+.stop {
+    pointer-events: none;
+}
