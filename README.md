@@ -1,6 +1,6 @@
 # Quiz-App
 
-https://github.com/amir4774/Quiz-App/assets/135974392/a9aa4a81-0280-4d4d-9962-ddd31108a885
+https://github.com/amir4774/Quiz-App/assets/135974392/5b223663-68e6-4cce-95bc-50c40e3096a6
 
 # Details
 A responsive quiz app using React, Context API, React-Router and Tailwindcss.
