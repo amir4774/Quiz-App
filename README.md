@@ -9,5 +9,22 @@ Six questions with medium difficulty level and random topics that announce the r
 
 If your answer is yes, you will go to the questions page with six new questions, otherwise you will be returned to the home page.
 
+# Getting Started
+This project was bootstrapped with vite.
+
+First install packages.
+```bash
+npm install
+# or
+npm i
+```
+
+Then, run the development server:
+```bash
+npm run dev
+```
+Open [http://localhost:5173/](http://localhost:5173/) with your browser to see the result!
+
+
 # API Used
 https://opentdb.com/api.php?amount=6&difficulty=medium
