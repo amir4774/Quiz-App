@@ -3,3 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.light {
+  background-color: #fff;
+}
+
+.dark {
+  background-color: #232D3F;
+}
