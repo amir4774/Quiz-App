@@ -13,11 +13,11 @@ export const LightTheme = createTheme({
       main: "#FCC822",
     },
     secondary: {
-      main: "#fff",
+      main: "#D7E5CA",
     },
     text: {
       primary: "#FCC822",
-      secondary: "#333",
+      secondary: "#3B3B3B",
     },
   },
   components: {
@@ -25,15 +25,14 @@ export const LightTheme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: "7px",
-          boxShadow: "0 5px 10px rgba(252, 200, 34, 0.5)",
           textTransform: "none",
+          color: "#FCC822",
         },
       },
       variants: [
         {
           props: { variant: "useful" },
           style: {
-            boxShadow: "0 5px 10px #FCC822",
             color: "#fff",
             backgroundColor: "#FCC822",
             "&:hover": { backgroundColor: "#F0B400" },
@@ -48,14 +47,14 @@ export const DarkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#27374D",
+      main: "#9DB2BF",
     },
     secondary: {
       main: "#ccc",
     },
     text: {
-      primary: "#fff",
-      secondary: "#ddd",
+      primary: "#FCC822",
+      secondary: "#fff",
     },
   },
   components: {
@@ -64,19 +63,14 @@ export const DarkTheme = createTheme({
         root: {
           borderRadius: "7px",
           textTransform: "none",
-          color: "#333",
-          backgroundColor: "#DDE6ED",
-          "&:hover": {
-            backgroundColor: "#9DB2BF",
-          }
+          color: "#fff",
         },
       },
       variants: [
         {
           props: { variant: "useful" },
           style: {
-            boxShadow: "0 5px 10px rgba(11, 27, 43, 0.5)",
-            backgroundColor: "#040f1a",
+            backgroundColor: "#9DB2BF",
             color: "#fff",
             "&:hover": {
               backgroundColor: "#27374D",

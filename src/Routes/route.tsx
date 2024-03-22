@@ -1,10 +1,10 @@
 import { useRoutes } from "react-router-dom";
-import Home from "../Pages/Home";
+import MainLayout from "../Pages/MainLayout";
 
 const routs = [
   {
     path: "/",
-    element: <Home />,
+    element: <MainLayout />,
   },
 ];
 
