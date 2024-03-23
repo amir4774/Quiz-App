@@ -80,7 +80,11 @@ const Navbar = () => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" sx={{ backgroundColor: "transparent" }}>
+      <AppBar
+        position="static"
+        component="nav"
+        sx={{ backgroundColor: "transparent" }}
+      >
         <Toolbar>
           {/* Mobile */}
           <Box
