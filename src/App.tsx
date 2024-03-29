@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import AppRouts from "./Routes/route";
 import { ThemeProvider } from "@mui/material";
 import { DarkTheme, LightTheme } from "./Theme";
 import useStore from "./Zustand/Store";
-import AppRouts from "./Routes/route";
 
 const App = () => {
   const { mode } = useStore();
@@ -25,6 +27,21 @@ const App = () => {
           <AppRouts />
         </BrowserRouter>
       </ThemeProvider>
+      <ToastContainer
+        position="top-center"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={true}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme={mode === "light" ? "light" : "dark"}
+        toastStyle={{
+          backgroundColor: mode === "light" ? "#F9F9F9" : "#232D3F",
+        }}
+      />
     </div>
   );
 };
