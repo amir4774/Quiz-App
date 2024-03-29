@@ -12,37 +12,42 @@ import {
   ListItemButton,
   ListItemText,
   Toolbar,
+  Tooltip,
   Typography,
+  useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   DarkModeOutlined,
   LightModeOutlined,
   LogoutOutlined,
+  LoginOutlined,
 } from "@mui/icons-material";
 import NavTitle from "./NavTitle";
 import useStore from "../../Zustand/Store";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { mode, changeMode } = useStore();
+  const { userName, changeMode } = useStore();
+  const theme = useTheme();
 
   const mobileMenu = (
     <Box sx={{ textAlign: "center" }}>
-      <Box my={2} color="text.primary" display="flex" justifyContent="center">
-        <NavTitle text="Quiz" color="text.secondary" />
-        <NavTitle text="Grad" />
+      <Box my={2} display="flex" justifyContent="center">
+        <NavTitle text="Quiz" spanText="Grad" />
       </Box>
 
       <Divider />
 
       <List sx={{ textAlign: "center" }}>
-        <ListItem>
-          <ListItemText
-            sx={{ textAlign: "center", color: "text.secondary" }}
-            primary="Amir Mahdi Abbasi"
-          />
-        </ListItem>
+        {userName && (
+          <ListItem>
+            <ListItemText
+              sx={{ textAlign: "center", color: "text.secondary" }}
+              primary={userName}
+            />
+          </ListItem>
+        )}
 
         <ListItem>
           <Link style={{ margin: "0 auto" }} to="#">
@@ -56,24 +61,36 @@ const Navbar = () => {
         <ListItem>
           <ListItemButton
             sx={{
-              color: mode === "light" ? "text.secondary" : "text.primary",
+              color:
+                theme.palette.mode === "light"
+                  ? "text.secondary"
+                  : "text.primary",
               textAlign: "center",
             }}
             onClick={changeMode}
           >
             <ListItemText
               primary={
-                mode === "light" ? <DarkModeOutlined /> : <LightModeOutlined />
+                theme.palette.mode === "light" ? (
+                  <DarkModeOutlined />
+                ) : (
+                  <LightModeOutlined />
+                )
               }
             />
           </ListItemButton>
         </ListItem>
 
-        <ListItem>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <ListItemText sx={{ fontWeight: 600 }} primary="Login" />
-          </ListItemButton>
-        </ListItem>
+        <Link to="/login">
+          <ListItem>
+            <ListItemButton sx={{ textAlign: "center" }}>
+              <ListItemText
+                sx={{ fontWeight: 600, color: "text.primary" }}
+                primary={userName ? "Logout" : "Login"}
+              />
+            </ListItemButton>
+          </ListItem>
+        </Link>
       </List>
     </Box>
   );
@@ -100,20 +117,29 @@ const Navbar = () => {
             </Box>
 
             <Typography color="text.primary" mr={2}>
-              Amir Mahdi Abbasi
+              {userName ? (
+                userName
+              ) : (
+                <Box display="flex" justifyContent="center">
+                  <NavTitle text="Quiz" spanText="Grad" />
+                </Box>
+              )}
             </Typography>
-            <IconButton>
-              <LogoutOutlined />
-            </IconButton>
+
+            <Link to="/login">
+              <Tooltip title={userName ? "Logout" : "Login"}>
+                <IconButton>
+                  {userName ? <LogoutOutlined /> : <LoginOutlined />}
+                </IconButton>
+              </Tooltip>
+            </Link>
           </Box>
 
           {/* Desktop */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
-            <NavTitle text="Quiz" color="text.secondary" />
-            <NavTitle text="Grad" />
+            <NavTitle text="Quiz" spanText="Grad" />
           </Box>
           <Box sx={{ display: { xs: "none", sm: "flex" } }} alignItems="center">
-            <Typography color="text.primary">Amir Mahdi Abbasi</Typography>
             <Link to="#">
               <Typography
                 sx={{ ml: 3, background: "none", color: "text.secondary" }}
@@ -121,19 +147,39 @@ const Navbar = () => {
                 About Us
               </Typography>
             </Link>
+
             <Button
               variant="text"
               sx={{
-                color: mode === "light" ? "text.secondary" : "text.primary",
-                mx: 3,
+                color:
+                  theme.palette.mode === "light"
+                    ? "text.secondary"
+                    : "text.primary",
+                mx: 2,
               }}
               onClick={changeMode}
             >
-              {mode === "light" ? <DarkModeOutlined /> : <LightModeOutlined />}
+              {theme.palette.mode === "light" ? (
+                <DarkModeOutlined />
+              ) : (
+                <LightModeOutlined />
+              )}
             </Button>
-            <Button variant="outlined" sx={{ p: "5px 30px", fontWeight: 600 }}>
-              Login
-            </Button>
+
+            {userName && (
+              <Typography margin="0 40px 0 10px" color="text.primary">
+                {userName}
+              </Typography>
+            )}
+
+            <Link to="/login">
+              <Button
+                variant="outlined"
+                sx={{ p: "5px 30px", fontWeight: 600 }}
+              >
+                {userName ? "Logout" : "Login"}
+              </Button>
+            </Link>
           </Box>
         </Toolbar>
       </AppBar>

@@ -1,0 +1,14 @@
+.span-text {
+  position: relative;
+}
+
+.span-text::before {
+  content: "";
+  background: url("../../assets/hat-icon.png") no-repeat;
+  display: block;
+  position: absolute;
+  bottom: 20px;
+  left: -15px;
+  width: 40px;
+  height: 40px;
+}

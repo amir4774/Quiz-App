@@ -1,8 +1,8 @@
 import { lazy } from "react";
 import { useRoutes } from "react-router-dom";
 import MainLayout from "../Components/Layout/MainLayout";
-
 const Landing = lazy(() => import("../Pages/Landing"));
+const Login = lazy(() => import("../Pages/Login"));
 
 const routs = [
   {
@@ -12,6 +12,10 @@ const routs = [
       {
         path: "/",
         element: <Landing />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

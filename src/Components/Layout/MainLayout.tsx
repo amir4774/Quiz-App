@@ -8,7 +8,7 @@ const MainLayout = () => {
     <div>
       <Navbar />
 
-      <Box mt={5}>
+      <Box mt={3}>
         <Suspense
           fallback={<Typography fontWeight={600}>Loading...</Typography>}
         >
