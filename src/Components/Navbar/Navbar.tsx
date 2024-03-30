@@ -12,19 +12,16 @@ import {
   ListItemButton,
   ListItemText,
   Toolbar,
-  Tooltip,
   Typography,
   useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import {
-  DarkModeOutlined,
-  LightModeOutlined,
-  LogoutOutlined,
-  LoginOutlined,
-} from "@mui/icons-material";
+import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 import NavTitle from "./NavTitle";
 import useStore from "../../Zustand/Store";
+import LoginListItem from "./LoginListItem";
+import LoginTooltip from "./LoginTooltip";
+import LoginButton from "./LoginButton";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -81,16 +78,13 @@ const Navbar = () => {
           </ListItemButton>
         </ListItem>
 
-        <Link to="/login">
-          <ListItem>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText
-                sx={{ fontWeight: 600, color: "text.primary" }}
-                primary={userName ? "Logout" : "Login"}
-              />
-            </ListItemButton>
-          </ListItem>
-        </Link>
+        {userName ? (
+          <LoginListItem title="Logout" />
+        ) : (
+          <Link to="/login">
+            <LoginListItem title="Login" />
+          </Link>
+        )}
       </List>
     </Box>
   );
@@ -126,13 +120,13 @@ const Navbar = () => {
               )}
             </Typography>
 
-            <Link to="/login">
-              <Tooltip title={userName ? "Logout" : "Login"}>
-                <IconButton>
-                  {userName ? <LogoutOutlined /> : <LoginOutlined />}
-                </IconButton>
-              </Tooltip>
-            </Link>
+            {userName ? (
+              <LoginTooltip title="Logout" isLogin={false} />
+            ) : (
+              <Link to="/login">
+                <LoginTooltip title="Login" isLogin={true} />
+              </Link>
+            )}
           </Box>
 
           {/* Desktop */}
@@ -172,14 +166,13 @@ const Navbar = () => {
               </Typography>
             )}
 
-            <Link to="/login">
-              <Button
-                variant="outlined"
-                sx={{ p: "5px 30px", fontWeight: 600 }}
-              >
-                {userName ? "Logout" : "Login"}
-              </Button>
-            </Link>
+            {userName ? (
+              <LoginButton title="Logout" />
+            ) : (
+              <Link to="/login">
+                <LoginButton title="Login" />
+              </Link>
+            )}
           </Box>
         </Toolbar>
       </AppBar>
