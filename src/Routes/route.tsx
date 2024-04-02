@@ -1,8 +1,10 @@
 import { lazy } from "react";
 import { useRoutes } from "react-router-dom";
+import Private from "./Private";
 import MainLayout from "../Components/Layout/MainLayout";
 const Landing = lazy(() => import("../Pages/Landing"));
 const Login = lazy(() => import("../Pages/Login"));
+const CreateExam = lazy(() => import("../Pages/CreateExam"));
 
 const routs = [
   {
@@ -16,6 +18,14 @@ const routs = [
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/create-exam",
+        element: (
+          <Private>
+            <CreateExam />
+          </Private>
+        ),
       },
     ],
   },

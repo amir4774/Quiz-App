@@ -2,6 +2,7 @@ import { Box, Button, Stack } from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import LandingTexts from "../Components/Landing/LandingTexts";
 import logo from "../assets/Landing.png";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -16,7 +17,9 @@ const Landing = () => {
         <Box width="100%" mt={3} mb={5}>
           <LandingTexts />
 
-          <Button variant="useful">Start solving</Button>
+          <Link to="/create-exam">
+            <Button variant="useful">Start solving</Button>
+          </Link>
           <Button
             startIcon={<ArrowDropDownIcon />}
             sx={{ ml: 2, p: "8px 15px" }}
