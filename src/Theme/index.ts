@@ -19,6 +19,9 @@ export const LightTheme = createTheme({
       primary: "#FCC822",
       secondary: "#3B3B3B",
     },
+    background: {
+      default: "#FFDC62",
+    },
   },
   components: {
     MuiButton: {
@@ -55,6 +58,9 @@ export const DarkTheme = createTheme({
     text: {
       primary: "#FCC822",
       secondary: "#fff",
+    },
+    background: {
+      default: "#395886",
     },
   },
   components: {
