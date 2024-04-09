@@ -1,12 +1,9 @@
 import { useState } from "react";
 import { ListItem, ListItemButton, ListItemText } from "@mui/material";
 import Logout from "../Logout/Logout";
+import { LoginListItemProps } from "./Interfaces";
 
-interface Props {
-  title: "Login" | "Logout";
-}
-
-const LoginListItem = ({ title }: Props) => {
+const LoginListItem = ({ title }: LoginListItemProps) => {
   const [openLoguot, setOpenLoguot] = useState(false);
 
   return (

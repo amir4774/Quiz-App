@@ -1,10 +1,6 @@
 import { Typography } from "@mui/material";
+import { NavTitleProps } from "./Interfaces";
 import "./NavbarStyle.css";
-
-interface NavTitleProps {
-  text: string;
-  spanText: string;
-}
 
 const NavTitle = ({ spanText, text }: NavTitleProps) => {
   return (

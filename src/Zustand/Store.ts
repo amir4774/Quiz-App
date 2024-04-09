@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Store, ExamParamsType } from "./interfaces";
+import { Store, ExamParamsType } from "./Interfaces";
 
 const useStore = create<Store>((set) => ({
   mode: "light",

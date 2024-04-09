@@ -15,29 +15,20 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import useStore from "../../Zustand/Store";
+import { Data } from "./Interfaces";
 import "./LoginStyle.css";
-
-interface Data {
-  name: string;
-  password: string;
-}
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { changeUserName } = useStore();
   const navigate = useNavigate();
-  
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      name: "",
-      password: "",
-    },
-  });
+  } = useForm<Data>();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 

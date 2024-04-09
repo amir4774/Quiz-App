@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
+import { toast } from "react-toastify";
 import {
   Box,
   Button,
@@ -10,12 +11,7 @@ import {
 } from "@mui/material";
 import logoutLogo from "../../assets/logout.png";
 import useStore from "../../Zustand/Store";
-import { toast } from "react-toastify";
-
-interface Props {
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-}
+import { Props } from "./Interfaces";
 
 const Logout = ({ open, setOpen }: Props) => {
   const [loading, setLoading] = useState(false);

@@ -2,13 +2,9 @@ import { useState } from "react";
 import { IconButton, Tooltip } from "@mui/material";
 import { LoginOutlined, LogoutOutlined } from "@mui/icons-material";
 import Logout from "../Logout/Logout";
+import { LoginTooltipProps } from "./Interfaces";
 
-interface Props {
-  title: "Login" | "Logout";
-  isLogin: boolean;
-}
-
-const LoginTooltip = ({ title, isLogin }: Props) => {
+const LoginTooltip = ({ title, isLogin }: LoginTooltipProps) => {
   const [openLoguot, setOpenLoguot] = useState(false);
 
   return (
