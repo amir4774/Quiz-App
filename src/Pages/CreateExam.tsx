@@ -6,6 +6,7 @@ import CreateExamStepper from "../Components/CreateExam/CreateExamStepper";
 import Category from "../Components/CreateExam/Cards/Category";
 import DifficultyandLimit from "../Components/CreateExam/Cards/DifficultyandLimit";
 import { FormInputs } from "../Components/CreateExam/Interfaces";
+import useStore from "../Zustand/Store";
 
 const steps = ["Category", "Difficulty", "Limit"];
 
@@ -13,6 +14,7 @@ const CreateExam = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
   const [completed, setCompleted] = useState<boolean[]>([]);
 
+  const { changeExamParams } = useStore();
   const navigate = useNavigate();
 
   const {
@@ -54,9 +56,9 @@ const CreateExam = () => {
   };
 
   const onSubmit = (data: FormInputs) => {
-    console.log(data);
     if (allStepsCompleted()) {
-      navigate("/");
+      changeExamParams(data);
+      navigate("/exam");
     }
   };
 
