@@ -31,6 +31,7 @@ const Logout = ({ open, setOpen }: Props) => {
     toast.success("Logged out successfully");
     changeUserName("");
     setLoading(false);
+    window.location.reload();
   };
 
   return (

@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Box, Button } from "@mui/material";
 import CreateExamStepper from "../Components/CreateExam/CreateExamStepper";
-import Category from "../Components/CreateExam/Category";
+import Category from "../Components/CreateExam/Cards/Category";
+import DifficultyandLimit from "../Components/CreateExam/Cards/DifficultyandLimit";
 import { FormInputs } from "../Components/CreateExam/Interfaces";
 
 const steps = ["Category", "Difficulty", "Limit"];
@@ -19,35 +20,25 @@ const CreateExam = () => {
     handleSubmit,
     watch,
     formState: { errors },
+    setValue,
   } = useForm<FormInputs>();
 
   const watchCategory = watch("category");
+  const watchDifficulty = watch("difficulty");
+  const watchLimit = watch("limit");
 
-  const totalSteps = () => {
-    return steps.length;
-  };
+  const totalSteps = () => steps.length;
 
-  const completedSteps = () => {
-    return completed.filter((bool) => bool).length;
-  };
+  const completedSteps = () => completed.filter((bool) => bool).length;
 
-  const isLastStep = () => {
-    return activeStep === totalSteps() - 1;
-  };
+  const isLastStep = () => activeStep === totalSteps() - 1;
 
-  const allStepsCompleted = () => {
-    if (completedSteps() === totalSteps()) {
-      navigate("/");
-      return true;
-    }
-
-    return false;
-  };
+  const allStepsCompleted = () => completedSteps() === totalSteps();
 
   const handleNext = () => {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
-        ? steps.findIndex((step, i) => !(i in completed))
+        ? steps.findIndex((_, i) => !(i in completed))
         : activeStep + 1;
     setActiveStep(newActiveStep);
   };
@@ -64,22 +55,22 @@ const CreateExam = () => {
 
   const onSubmit = (data: FormInputs) => {
     console.log(data);
+    if (allStepsCompleted()) {
+      navigate("/");
+    }
   };
 
-  // useEffect(() => {
-  //   if (examParams.category) {
-  //     handleComplete(0);
-  //   } else if (examParams.difficulty) {
-  //     handleComplete(1);
-  //   } else if (examParams.limit) {
-  //     handleComplete(2);
-  //   }
-  // }, [examParams]);
   useEffect(() => {
     if (watchCategory) {
       handleComplete(0);
     }
-  }, [watchCategory]);
+    if (watchDifficulty) {
+      handleComplete(1);
+    }
+    if (watchLimit) {
+      handleComplete(2);
+    }
+  }, [watchCategory, watchDifficulty, watchLimit]);
 
   return (
     <div>
@@ -92,8 +83,17 @@ const CreateExam = () => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <Category register={register} errors={errors} />
+          <DifficultyandLimit
+            register={register}
+            errors={errors}
+            setValue={setValue}
+          />
 
-          <Button type="submit" variant="useful" sx={{ my: 3 }}>
+          <Button
+            type="submit"
+            variant="useful"
+            sx={{ my: 3, width: { xs: "100%", md: "150px" } }}
+          >
             Start Quize
           </Button>
         </form>

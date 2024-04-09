@@ -3,13 +3,14 @@ import {
   CardContent,
   FormControl,
   FormControlLabel,
-  FormHelperText,
   Grid,
   Radio,
   RadioGroup,
-  Typography,
+  useTheme,
 } from "@mui/material";
-import { CategoryProps } from "./Interfaces";
+import CardTitle from "./CardTitle";
+import { CategoryProps } from "../Interfaces";
+import CardError from "./CardError";
 
 const categories = [
   "Linux",
@@ -25,6 +26,8 @@ const categories = [
 ];
 
 const Category = ({ register, errors }: CategoryProps) => {
+  const theme = useTheme();
+
   return (
     <div>
       <Card
@@ -34,15 +37,7 @@ const Category = ({ register, errors }: CategoryProps) => {
         }}
       >
         <CardContent>
-          <Typography
-            textAlign="center"
-            color="text.secondary"
-            fontWeight={600}
-            fontSize={20}
-            mb={3}
-          >
-            Choose your favorite category
-          </Typography>
+          <CardTitle text="Choose your favorite category" />
 
           <FormControl variant="standard" sx={{ width: "100%" }}>
             <RadioGroup>
@@ -60,11 +55,14 @@ const Category = ({ register, errors }: CategoryProps) => {
                         "& .MuiSvgIcon-root": {
                           color: "text.secondary",
                         },
+                        "& .Mui-checked .MuiSvgIcon-root": {
+                          color:
+                            theme.palette.mode === "dark"
+                              ? "#4af452"
+                              : "#784af4",
+                        },
                         "& .MuiTypography-root": {
                           color: "text.secondary",
-                        },
-                        "&.Mui-checked .MuiTypography-root": {
-                          color: "primary.main",
                         },
                       }}
                     />
@@ -72,12 +70,8 @@ const Category = ({ register, errors }: CategoryProps) => {
                 ))}
               </Grid>
             </RadioGroup>
-            <FormHelperText
-              error
-              sx={{ fontWeight: 600, fontSize: 15, textAlign: "center" }}
-            >
-              {errors.category?.message}
-            </FormHelperText>
+            
+            <CardError text={errors.category?.message} />
           </FormControl>
         </CardContent>
       </Card>

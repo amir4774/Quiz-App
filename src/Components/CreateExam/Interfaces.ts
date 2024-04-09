@@ -1,4 +1,4 @@
-import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister, UseFormSetValue } from "react-hook-form";
 
 export interface FormInputs {
   category: string;
@@ -12,7 +12,10 @@ export interface StepperProps {
   steps: string[];
 }
 
-export interface CategoryProps {
+export interface DifficultyProps {
   register: UseFormRegister<FormInputs>;
   errors: FieldErrors<FormInputs>;
+  setValue: UseFormSetValue<FormInputs>;
 }
+
+export interface CategoryProps extends Omit<DifficultyProps, "setValue"> {}
