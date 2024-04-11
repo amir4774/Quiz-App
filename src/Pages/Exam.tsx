@@ -1,13 +1,22 @@
-import useStore from "../Zustand/Store";
+import { Box, Skeleton } from "@mui/material";
+import useQuize from "../Hooks/useQuize";
 
 const Exam = () => {
-  const { examParams } = useStore();
+  const { isLoading, questions } = useQuize();
 
   return (
     <div>
-      {examParams.category}
-      {examParams.limit}
-      {examParams.difficulty}
+      <Box width="90%" mx="auto">
+        {isLoading ? (
+          <Skeleton
+            variant="text"
+            animation="wave"
+            sx={{ fontSize: "2rem", bgcolor: "background.default" }}
+          />
+        ) : (
+          <>{questions[0]?.question}</>
+        )}
+      </Box>
     </div>
   );
 };
