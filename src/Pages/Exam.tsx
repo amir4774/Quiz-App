@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import useQuize from "../Hooks/useQuize";
-import LoadingExam from "../Components/Exam/LoadingExam";
+import LoadingExam from "../Components/Exam/Loading/LoadingExam";
 import Questions from "../Components/Exam/Questions";
 
 const Exam = () => {
