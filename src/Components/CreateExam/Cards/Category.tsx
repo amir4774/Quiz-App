@@ -15,10 +15,7 @@ import CardError from "./CardError";
 const categories = [
   "Linux",
   "DevOps",
-  "Networking",
-  "Cloud",
   "Code",
-  "Kubernetes",
   "Docker",
   "SQL",
   "CMS",

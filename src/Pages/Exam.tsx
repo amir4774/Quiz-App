@@ -1,5 +1,7 @@
-import { Box, Skeleton } from "@mui/material";
+import { Box } from "@mui/material";
 import useQuize from "../Hooks/useQuize";
+import LoadingExam from "../Components/Exam/LoadingExam";
+import Questions from "../Components/Exam/Questions";
 
 const Exam = () => {
   const { isLoading, questions } = useQuize();
@@ -7,15 +9,7 @@ const Exam = () => {
   return (
     <div>
       <Box width="90%" mx="auto">
-        {isLoading ? (
-          <Skeleton
-            variant="text"
-            animation="wave"
-            sx={{ fontSize: "2rem", bgcolor: "background.default" }}
-          />
-        ) : (
-          <>{questions[0]?.question}</>
-        )}
+        {isLoading ? <LoadingExam /> : <Questions questions={questions} />}
       </Box>
     </div>
   );
