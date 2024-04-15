@@ -2,9 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { QuestionsType } from "./Interfaces";
-import QuestionSlide from "./QuestionSlide";
+import QuestionSlide from "./QuestionSlide/QuestionSlide";
 import SliderButton from "./SliderButton";
+import { QuestionsType } from "./Interfaces";
 
 const Questions = ({ questions }: { questions: QuestionsType[] }) => {
   return (
@@ -26,10 +26,10 @@ const Questions = ({ questions }: { questions: QuestionsType[] }) => {
             {question.multiple_correct_answers === "true" ? (
               <>multiple</>
             ) : (
-              <QuestionSlide question={question} index={index} />
+              <QuestionSlide question={question} questionNumber={index + 1} />
             )}
 
-            <SliderButton index={index} length={questions.length} />
+            <SliderButton questionNumber={index + 1} />
           </SwiperSlide>
         ))}
       </Swiper>

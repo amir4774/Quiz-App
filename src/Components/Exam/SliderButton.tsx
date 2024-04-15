@@ -1,8 +1,11 @@
 import { Box, Button } from "@mui/material";
 import { ArrowLeftRounded, ArrowRightRounded } from "@mui/icons-material";
+import useStore from "../../Zustand/Store";
 import { SliderButtonType } from "./Interfaces";
 
-const SliderButton = ({ index, length }: SliderButtonType) => {
+const SliderButton = ({ questionNumber }: SliderButtonType) => {
+  const { examParams } = useStore();
+
   return (
     <Box
       my={3}
@@ -14,7 +17,7 @@ const SliderButton = ({ index, length }: SliderButtonType) => {
         className="prev-slide"
         sx={{ padding: "7px 25px" }}
         startIcon={<ArrowLeftRounded />}
-        disabled={index === 0}
+        disabled={questionNumber === 1}
       >
         Back
       </Button>
@@ -23,7 +26,7 @@ const SliderButton = ({ index, length }: SliderButtonType) => {
         sx={{ padding: "7px 25px" }}
         endIcon={<ArrowRightRounded />}
       >
-        {index + 1 === length ? "Submit" : "Next"}
+        {questionNumber === examParams.limit ? "Submit" : "Next"}
       </Button>
     </Box>
   );

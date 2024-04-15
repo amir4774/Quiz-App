@@ -1,3 +1,5 @@
+import { MouseEvent } from "react";
+
 export interface QuestionsType {
   id: number;
   question: string;
@@ -8,11 +10,22 @@ export interface QuestionsType {
 }
 
 export interface QuestionSlideType {
-  index: number;
+  questionNumber: number;
   question: QuestionsType;
 }
 
-export interface SliderButtonType {
+export interface SliderButtonType extends Omit<QuestionSlideType, "question"> {}
+
+export interface QuestionButtonsType {
+  correct_answers: object;
+  answers: string[];
+}
+
+export interface QuestionButtonType {
+  answer: string;
+  wrongAnswerValue: string;
   index: number;
-  length: number;
+  correctAnswerIndex: number;
+  reply: boolean;
+  handleClick: (e: MouseEvent<HTMLButtonElement>) => void;
 }
