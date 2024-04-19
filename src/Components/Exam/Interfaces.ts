@@ -7,6 +7,17 @@ export interface QuestionsType {
   answers: object;
   correct_answers: object;
   category: string;
+  difficulty: string;
+}
+
+export interface QuestionDetailsType {
+  category: string;
+  difficulty: string;
+}
+
+export interface QuestionDetailsTitleType {
+  title: string;
+  text: string;
 }
 
 export interface QuestionSlideType {
