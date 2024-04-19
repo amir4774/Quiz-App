@@ -1,36 +1,19 @@
-import { useMemo } from "react";
-import { Avatar, Box, Stack, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import QuestionButtons from "./QuestionButtons";
+import QuestionTitle from "../QuestionTitle";
+import useAnswers from "../../../Hooks/useAnswers";
 import { QuestionSlideType } from "../Interfaces";
 
 const QuestionSlide = ({ question, questionNumber }: QuestionSlideType) => {
-  const answers = useMemo(() => {
-    return Object.values(question.answers).filter((answer) => answer);
-  }, [question]);
+  const { answers } = useAnswers(question);
 
   return (
     <Box mx="auto">
-      <Stack direction="row" alignItems="center" my={5}>
-        <Avatar
-          sx={{
-            bgcolor: "background.default",
-            color: "#fff",
-            width: 35,
-            height: 35,
-            mr: 1,
-          }}
-        >
-          {questionNumber}
-        </Avatar>
-
-        <Typography
-          color="text.secondary"
-          fontSize={{ xs: 15, md: 20 }}
-          textAlign="justify"
-        >
-          {question.question}
-        </Typography>
-      </Stack>
+      <QuestionTitle
+        question={question.question}
+        isMultiple={false}
+        questionNumber={questionNumber}
+      />
 
       <QuestionButtons
         answers={answers}

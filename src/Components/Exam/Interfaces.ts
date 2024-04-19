@@ -14,6 +14,8 @@ export interface QuestionSlideType {
   question: QuestionsType;
 }
 
+export interface MultipleSlideType extends QuestionSlideType {}
+
 export interface SliderButtonType extends Omit<QuestionSlideType, "question"> {}
 
 export interface QuestionButtonsType {
@@ -28,4 +30,19 @@ export interface QuestionButtonType {
   correctAnswerIndex: number;
   reply: boolean;
   handleClick: (e: MouseEvent<HTMLButtonElement>) => void;
+}
+
+export interface MultipleButtonType {
+  reply: boolean;
+  answer: string;
+  correct_answers: string[];
+  checked: boolean[];
+  index: number;
+  handleChange: (selectedCheckBox: number) => void;
+}
+
+export interface QuestionTitleType {
+  question: string;
+  isMultiple: boolean;
+  questionNumber: number;
 }

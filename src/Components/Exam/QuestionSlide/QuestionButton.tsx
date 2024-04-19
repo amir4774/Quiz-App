@@ -34,11 +34,11 @@ const QuestionButton = ({
       sx={{
         py: 2,
         transition: "transform 0.3s, background 1s",
-        bgcolor: changeBackgroundColor,
         "&:hover": {
           transform: "scale(1.03)",
         },
         "&:disabled": {
+          bgcolor: changeBackgroundColor,
           color: changeColor,
         },
       }}

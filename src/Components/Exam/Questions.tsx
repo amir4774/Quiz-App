@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import MultipleSlide from "./MultipleSlide/MultipleSlide";
 import QuestionSlide from "./QuestionSlide/QuestionSlide";
 import SliderButton from "./SliderButton";
 import { QuestionsType } from "./Interfaces";
@@ -24,7 +25,7 @@ const Questions = ({ questions }: { questions: QuestionsType[] }) => {
         {questions.map((question, index) => (
           <SwiperSlide key={question.id}>
             {question.multiple_correct_answers === "true" ? (
-              <>multiple</>
+              <MultipleSlide question={question} questionNumber={index + 1} />
             ) : (
               <QuestionSlide question={question} questionNumber={index + 1} />
             )}
