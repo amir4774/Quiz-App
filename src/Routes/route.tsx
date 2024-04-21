@@ -37,6 +37,10 @@ const routs = [
           </ExamPrivate>
         ),
       },
+      {
+        path: "/result",
+        element: <h1>Result</h1>,
+      },
     ],
   },
 ];

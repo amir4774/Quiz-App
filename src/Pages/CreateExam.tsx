@@ -94,7 +94,7 @@ const CreateExam = () => {
           <Button
             type="submit"
             variant="useful"
-            sx={{ my: 3, width: { xs: "100%", md: "150px" } }}
+            sx={{ my: 3, width: { xs: "100%", md: "150px" }, float: "right" }}
           >
             Start Quize
           </Button>
