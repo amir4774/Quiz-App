@@ -6,7 +6,7 @@ const LoadingButton = () => {
       <Skeleton
         variant="rounded"
         animation="wave"
-        sx={{ bgcolor: "background.default", p: 5 }}
+        sx={{ bgcolor: "background.default", p: 5, mb: 1 }}
       />
     </Grid>
   );

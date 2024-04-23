@@ -5,6 +5,7 @@ const useStore = create<Store>((set, get) => ({
   mode: sessionStorage.getItem("mode") || "dark",
   userName: sessionStorage.getItem("userName") || "",
   examParams: { category: "", difficulty: "", limit: 0 },
+  result: { correct: 0, incorrect: 0 },
 
   changeMode: () => {
     set((state) => ({ mode: state.mode === "light" ? "dark" : "light" }));
@@ -18,6 +19,11 @@ const useStore = create<Store>((set, get) => ({
 
   changeExamParams: (params: ExamParamsType) =>
     set(() => ({ examParams: params })),
+
+  changeResult: (status: "correct" | "incorrect") =>
+    set((state) => ({
+      result: { ...state.result, [status]: state.result[status] + 1 },
+    })),
 }));
 
 export default useStore;

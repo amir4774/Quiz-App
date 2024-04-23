@@ -7,6 +7,7 @@ const Landing = lazy(() => import("../Pages/Landing"));
 const Login = lazy(() => import("../Pages/Login"));
 const CreateExam = lazy(() => import("../Pages/CreateExam"));
 const Exam = lazy(() => import("../Pages/Exam"));
+const Result = lazy(() => import("../Pages/Result"));
 
 const routs = [
   {
@@ -39,7 +40,7 @@ const routs = [
       },
       {
         path: "/result",
-        element: <h1>Result</h1>,
+        element: <Result />,
       },
     ],
   },

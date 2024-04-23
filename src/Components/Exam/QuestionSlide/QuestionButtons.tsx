@@ -1,12 +1,14 @@
 import { MouseEvent, useState } from "react";
 import { Grid } from "@mui/material";
 import QuestionButton from "./QuestionButton";
+import useStore from "../../../Zustand/Store";
 import { QuestionButtonsType } from "../Interfaces";
 
 const QuestionButtons = ({ correct_answers, answers }: QuestionButtonsType) => {
   const [reply, setReply] = useState(false);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(-1);
   const [wrongAnswerValue, setWrongAnswerValue] = useState("");
+  const { changeResult } = useStore();
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const selectedButton = e.currentTarget;
@@ -21,6 +23,9 @@ const QuestionButtons = ({ correct_answers, answers }: QuestionButtonsType) => {
     // Check is it correct?
     if (answers[correctIndex] !== selectedButton.value) {
       setWrongAnswerValue(selectedButton.value);
+      changeResult("incorrect");
+    } else {
+      changeResult("correct");
     }
 
     // All Button Disabled

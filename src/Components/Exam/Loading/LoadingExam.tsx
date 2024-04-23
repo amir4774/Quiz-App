@@ -4,7 +4,18 @@ import LoadingButton from "./LoadingButton";
 const LoadingExam = () => {
   return (
     <Box component="div">
-      <Stack display="flex" alignItems="center" direction="row" my={5}>
+      <Skeleton
+        variant="text"
+        animation="wave"
+        sx={{
+          bgcolor: "background.default",
+          height: "100px",
+          mt: 3,
+          mx: "auto",
+        }}
+      />
+
+      <Stack display="flex" alignItems="center" direction="row" my={2}>
         <Skeleton
           animation="wave"
           variant="circular"
