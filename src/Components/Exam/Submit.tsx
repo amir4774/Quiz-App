@@ -10,8 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
+import { SubmitType } from "./Interfaces";
 
-const Submit = ({ open, setOpen }: any) => {
+const Submit = ({ open, setOpen }: SubmitType) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ const Submit = ({ open, setOpen }: any) => {
     setLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     setLoading(false);
-    
+
     navigate("/result");
   };
 

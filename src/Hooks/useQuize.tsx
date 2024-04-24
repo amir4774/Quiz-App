@@ -17,7 +17,6 @@ const useQuize = () => {
         `/questions?apiKey=${apiKey}&&category=${category}&&limit=${limit}&&difficulty=${difficulty}`
       );
       setQuestions(data);
-      console.log(data)
 
       setIsLoading(false);
     };

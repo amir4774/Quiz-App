@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 
 export interface QuestionsType {
   id: number;
@@ -56,4 +56,9 @@ export interface QuestionTitleType {
   question: string;
   isMultiple: boolean;
   questionNumber: number;
+}
+
+export interface SubmitType {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
 }
