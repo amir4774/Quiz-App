@@ -1,5 +1,9 @@
+import { Box } from "@mui/material";
 import { Navigate } from "react-router-dom";
 import useStore from "../Zustand/Store";
+import Chart from "../Components/Result/Chart";
+import ResultTitle from "../Components/Result/ResultTitle";
+import PlayAgain from "../Components/Result/PlayAgain";
 
 const Result = () => {
   const { result } = useStore();
@@ -10,7 +14,11 @@ const Result = () => {
 
   return (
     <div>
-      {result.incorrect} {result.correct}
+      <Box width="90%" mx="auto">
+        <ResultTitle />
+        <Chart />
+        <PlayAgain />
+      </Box>
     </div>
   );
 };

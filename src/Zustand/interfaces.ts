@@ -18,4 +18,5 @@ export interface Store {
   changeUserName: (name: string) => void;
   changeExamParams: (params: ExamParamsType) => void;
   changeResult: (status: "correct" | "incorrect") => void;
+  resetResult: () => void;
 }

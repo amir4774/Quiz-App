@@ -24,6 +24,8 @@ const useStore = create<Store>((set, get) => ({
     set((state) => ({
       result: { ...state.result, [status]: state.result[status] + 1 },
     })),
+
+  resetResult: () => set(() => ({ result: { correct: 0, incorrect: 0 } })),
 }));
 
 export default useStore;

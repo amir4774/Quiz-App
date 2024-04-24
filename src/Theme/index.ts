@@ -79,7 +79,7 @@ export const DarkTheme = createTheme({
             backgroundColor: "#9DB2BF",
             color: "#fff",
             "&:hover": {
-              backgroundColor: "#27374D",
+              backgroundColor: "#9DB2BF99",
             },
           },
         },
