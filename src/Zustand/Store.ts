@@ -1,5 +1,5 @@
 import { create } from "zustand";
-// import { Store, ExamParamsType } from "./Interfaces";
+
 export interface ExamParamsType {
   category: string;
   difficulty: string;
