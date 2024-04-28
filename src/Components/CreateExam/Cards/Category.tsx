@@ -1,3 +1,5 @@
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import {
   Card,
   CardContent,
@@ -12,6 +14,8 @@ import CardTitle from "./CardTitle";
 import { CategoryProps } from "../Interfaces";
 import CardError from "./CardError";
 
+gsap.registerPlugin(useGSAP);
+
 const categories = [
   "Linux",
   "DevOps",
@@ -24,6 +28,15 @@ const categories = [
 
 const Category = ({ register, errors }: CategoryProps) => {
   const theme = useTheme();
+  const { contextSafe } = useGSAP();
+
+  const handleClick = contextSafe((category: string) => {
+    gsap.fromTo(
+      `.check-box-${category}`,
+      { rotation: "0" },
+      { rotation: "+=360" }
+    );
+  });
 
   return (
     <div>
@@ -42,6 +55,8 @@ const Category = ({ register, errors }: CategoryProps) => {
                 {categories.map((category) => (
                   <Grid item xs={6} md={3} key={category}>
                     <FormControlLabel
+                      className={`check-box-${category}`}
+                      onClick={() => handleClick(category)}
                       value={category}
                       label={category}
                       control={<Radio />}
@@ -67,7 +82,7 @@ const Category = ({ register, errors }: CategoryProps) => {
                 ))}
               </Grid>
             </RadioGroup>
-            
+
             <CardError text={errors.category?.message} />
           </FormControl>
         </CardContent>
