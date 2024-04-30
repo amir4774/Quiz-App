@@ -16,6 +16,7 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import useStore from "../../Zustand/Store";
 import { Data } from "./Interfaces";
+import QuizGradTitle from "../QuizGradTitle";
 import "./LoginStyle.css";
 
 const LoginForm = () => {
@@ -43,18 +44,7 @@ const LoginForm = () => {
 
   return (
     <Box color="text.primary" textAlign="center" px={5} width="100%">
-      <Typography fontSize={40} fontWeight={700}>
-        <Typography
-          component="span"
-          color="text.secondary"
-          fontSize={40}
-          fontWeight={700}
-          className="span-text"
-        >
-          Quiz
-        </Typography>
-        Grad
-      </Typography>
+      <QuizGradTitle />
 
       <Typography color="text.secondary">
         Welcome back! <br /> Please Login to your account.

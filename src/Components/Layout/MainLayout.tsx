@@ -1,7 +1,8 @@
-import { Outlet } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
-import Navbar from "../Navbar/Navbar";
 import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
+import { Box } from "@mui/material";
+import Navbar from "../Navbar/Navbar";
+import LazyLoading from "../LazyLoading";
 
 const MainLayout = () => {
   return (
@@ -9,9 +10,7 @@ const MainLayout = () => {
       <Navbar />
 
       <Box mt={3}>
-        <Suspense
-          fallback={<Typography fontWeight={600}>Loading...</Typography>}
-        >
+        <Suspense fallback={<LazyLoading />}>
           <Outlet />
         </Suspense>
       </Box>

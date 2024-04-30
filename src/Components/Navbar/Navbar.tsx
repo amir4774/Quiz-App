@@ -4,13 +4,8 @@ import {
   AppBar,
   Box,
   Button,
-  Divider,
   Drawer,
   IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
   Toolbar,
   Typography,
   useTheme,
@@ -19,75 +14,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 import NavTitle from "./NavTitle";
 import useStore from "../../Zustand/Store";
-import LoginListItem from "./LoginListItem";
 import LoginTooltip from "./LoginTooltip";
 import LoginButton from "./LoginButton";
+import MobileMenu from "./MobileMenu";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { userName, changeMode } = useStore();
   const theme = useTheme();
-
-  const mobileMenu = (
-    <Box sx={{ textAlign: "center" }}>
-      <Box my={2} display="flex" justifyContent="center">
-        <NavTitle text="Quiz" spanText="Grad" />
-      </Box>
-
-      <Divider />
-
-      <List sx={{ textAlign: "center" }}>
-        {userName && (
-          <ListItem>
-            <ListItemText
-              sx={{ textAlign: "center", color: "text.secondary" }}
-              primary={userName}
-            />
-          </ListItem>
-        )}
-
-        <ListItem>
-          <Link style={{ margin: "0 auto" }} to="#">
-            <ListItemText
-              sx={{ background: "none", color: "text.secondary" }}
-              primary="About Us"
-            />
-          </Link>
-        </ListItem>
-
-        <ListItem>
-          <ListItemButton
-            sx={{
-              color:
-                theme.palette.mode === "light"
-                  ? "text.secondary"
-                  : "text.primary",
-              textAlign: "center",
-            }}
-            onClick={changeMode}
-          >
-            <ListItemText
-              primary={
-                theme.palette.mode === "light" ? (
-                  <DarkModeOutlined />
-                ) : (
-                  <LightModeOutlined />
-                )
-              }
-            />
-          </ListItemButton>
-        </ListItem>
-
-        {userName ? (
-          <LoginListItem title="Logout" />
-        ) : (
-          <Link to="/login">
-            <LoginListItem title="Login" />
-          </Link>
-        )}
-      </List>
-    </Box>
-  );
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -115,7 +49,7 @@ const Navbar = () => {
                 userName
               ) : (
                 <Box display="flex" justifyContent="center">
-                  <NavTitle text="Quiz" spanText="Grad" />
+                  <NavTitle text="Grad" spanText="Quiz" />
                 </Box>
               )}
             </Typography>
@@ -131,7 +65,7 @@ const Navbar = () => {
 
           {/* Desktop */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
-            <NavTitle text="Quiz" spanText="Grad" />
+            <NavTitle text="Grad" spanText="Quiz" />
           </Box>
           <Box sx={{ display: { xs: "none", sm: "flex" } }} alignItems="center">
             <Link to="#">
@@ -193,7 +127,7 @@ const Navbar = () => {
             },
           }}
         >
-          {mobileMenu}
+          <MobileMenu />
         </Drawer>
       </nav>
     </Box>
