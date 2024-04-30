@@ -4,7 +4,7 @@ This is a React project bootstrapped with [Vite](https://vitejs.dev/).
 
 ### The libraries used are: 
 
-TS, MUI, React, React-Router, Zustand, Axios, React-Confetti, React-Hook-Form, React-Toastify, Recharts, Swiper.js, React-Use.
+TS, MUI, React, React-Router, Zustand, Axios, GSAP, React-Confetti, React-Hook-Form, React-Toastify, Recharts, Swiper.js, React-Use.
 
 
 ## API Used
