@@ -3,6 +3,7 @@ import { useRoutes } from "react-router-dom";
 import Private from "./Private";
 import ExamPrivate from "./ExamPrivate";
 import MainLayout from "../Components/Layout/MainLayout";
+import NotFound from "../Pages/NotFound";
 const Landing = lazy(() => import("../Pages/Landing"));
 const Login = lazy(() => import("../Pages/Login"));
 const CreateExam = lazy(() => import("../Pages/CreateExam"));
@@ -41,6 +42,10 @@ const routs = [
       {
         path: "/result",
         element: <Result />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
