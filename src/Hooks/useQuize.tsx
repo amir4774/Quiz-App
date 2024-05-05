@@ -7,16 +7,24 @@ import { QuestionsType } from "../Components/Exam/Interfaces";
 const useQuize = () => {
   const [questions, setQuestions] = useState<QuestionsType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const { category, difficulty, limit } = useExamParams();
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
+      try {
+        setIsLoading(true);
+        setIsError(false);
 
-      const { data } = await Api().get(
-        `/questions?apiKey=${apiKey}&&category=${category}&&limit=${limit}&&difficulty=${difficulty}`
-      );
-      setQuestions(data);
+        const { data } = await Api().get(
+          `/questions?apiKey=${apiKey}&&category=${category}&&limit=${limit}&&difficulty=${difficulty}`
+        );
+        setQuestions(data);
+      } catch {
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
 
       setIsLoading(false);
     };
@@ -27,6 +35,7 @@ const useQuize = () => {
   return {
     questions,
     isLoading,
+    isError,
   };
 };
 
