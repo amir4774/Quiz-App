@@ -10,7 +10,8 @@ import {
 } from "@mui/material";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 import NavTitle from "./NavTitle";
-import LoginListItem from "./LoginListItem";
+import SignUpListItem from "./SignUpButtons/SignUpListItem";
+import LoginListItem from "./Login_Logout/LoginListItem";
 import useStore from "../../Zustand/Store";
 
 const MobileMenu = () => {
@@ -34,15 +35,6 @@ const MobileMenu = () => {
             />
           </ListItem>
         )}
-
-        <ListItem>
-          <Link style={{ margin: "0 auto" }} to="#">
-            <ListItemText
-              sx={{ background: "none", color: "text.secondary" }}
-              primary="About Us"
-            />
-          </Link>
-        </ListItem>
 
         <ListItem>
           <ListItemButton
@@ -74,6 +66,8 @@ const MobileMenu = () => {
             <LoginListItem title="Login" />
           </Link>
         )}
+
+        {!userName && <SignUpListItem />}
       </List>
     </Box>
   );

@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { ListItem, ListItemButton, ListItemText } from "@mui/material";
-import Logout from "../Logout/Logout";
-import { LoginListItemProps } from "./Interfaces";
+import Logout from "../../Logout/Logout";
+import { LoginListItemProps } from "../Interfaces";
 
 const LoginListItem = ({ title }: LoginListItemProps) => {
-  const [openLoguot, setOpenLoguot] = useState(false);
+  const [openLogout, setOpenLogout] = useState(false);
 
   return (
     <>
       <ListItem>
         <ListItemButton
           sx={{ textAlign: "center" }}
-          onClick={() => setOpenLoguot(true)}
+          onClick={() => setOpenLogout(true)}
         >
           <ListItemText
             sx={{ fontWeight: 600, color: "text.primary" }}
@@ -21,7 +21,7 @@ const LoginListItem = ({ title }: LoginListItemProps) => {
       </ListItem>
 
       {title === "Logout" && (
-        <Logout open={openLoguot} setOpen={setOpenLoguot} />
+        <Logout open={openLogout} setOpen={setOpenLogout} />
       )}
     </>
   );

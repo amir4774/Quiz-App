@@ -6,6 +6,7 @@ import MainLayout from "../Components/Layout/MainLayout";
 import NotFound from "../Pages/NotFound";
 const Landing = lazy(() => import("../Pages/Landing"));
 const Login = lazy(() => import("../Pages/Login"));
+const SignUp = lazy(() => import("../Pages/SignUp"));
 const CreateExam = lazy(() => import("../Pages/CreateExam"));
 const Exam = lazy(() => import("../Pages/Exam"));
 const Result = lazy(() => import("../Pages/Result"));
@@ -22,6 +23,10 @@ const routs = [
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUp />,
       },
       {
         path: "/create-exam",

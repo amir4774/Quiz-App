@@ -24,7 +24,7 @@ const NotFound = () => {
               to home.
             </Typography>
 
-            <Link to="/create-exam">
+            <Link to="/">
               <Button fullWidth sx={{ mb: { xs: 5, md: 0 } }}>
                 Back to home
               </Button>

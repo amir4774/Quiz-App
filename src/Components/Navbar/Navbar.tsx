@@ -14,9 +14,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 import NavTitle from "./NavTitle";
 import useStore from "../../Zustand/Store";
-import LoginTooltip from "./LoginTooltip";
-import LoginButton from "./LoginButton";
+import LoginTooltip from "./Login_Logout/LoginTooltip";
+import LoginButton from "./Login_Logout/LoginButton";
 import MobileMenu from "./MobileMenu";
+import SignUpButton from "./SignUpButtons/SignUpButton";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -68,14 +69,6 @@ const Navbar = () => {
             <NavTitle text="Grad" spanText="Quiz" />
           </Box>
           <Box sx={{ display: { xs: "none", sm: "flex" } }} alignItems="center">
-            <Link to="#">
-              <Typography
-                sx={{ ml: 3, background: "none", color: "text.secondary" }}
-              >
-                About Us
-              </Typography>
-            </Link>
-
             <Button
               variant="text"
               sx={{
@@ -107,6 +100,8 @@ const Navbar = () => {
                 <LoginButton title="Login" />
               </Link>
             )}
+
+            {!userName && <SignUpButton />}
           </Box>
         </Toolbar>
       </AppBar>
