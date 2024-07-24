@@ -55,7 +55,7 @@ const LoginForm = () => {
 
       navigate("/");
     } catch (error: any) {
-      if (error.response.status == 401) {
+      if (error.response?.status == 401) {
         toast.error("Wrong username or password");
       } else {
         toast.error("Something went wrong");
