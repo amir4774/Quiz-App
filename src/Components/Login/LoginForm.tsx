@@ -17,13 +17,14 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import QuizGradTitle from "../QuizGradTitle";
 import useStore from "../../Zustand/Store";
 import useShowPassword from "../../Hooks/useShowPassword";
+import InternalApi from "../../Services/InternalApi";
 import { LoginData } from "../SignUp_Login/Interfaces";
 import "../SignUp_Login/SignUp_Login_Style.css";
 
 const LoginForm = () => {
   const showPassword = useShowPassword(false);
   const [loading, setLoading] = useState(false);
-  const { changeUserName } = useStore();
+  const { changeUserName, changeToken } = useStore();
   const navigate = useNavigate();
 
   const {
@@ -33,12 +34,35 @@ const LoginForm = () => {
   } = useForm<LoginData>();
 
   const onSubmit = async (data: LoginData) => {
-    setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setLoading(false);
-    toast.success(`!Welcome back, ${data.name}`);
-    changeUserName(data.name);
-    navigate("/");
+    try {
+      setLoading(true);
+
+      const res = await InternalApi().post("login/", {
+        username: data.name,
+        password: data.password,
+      });
+
+      // const res = await axios.post("http://127.0.0.1:8000/login/", {
+      //   username: data.name,
+      //   password: data.password,
+      // });
+
+      toast.success(`!Welcome back, ${data.name}`);
+      changeUserName(data.name);
+
+      localStorage.setItem("token", res.data.access);
+      changeToken(res.data.access);
+
+      navigate("/");
+    } catch (error: any) {
+      if (error.response.status == 401) {
+        toast.error("Wrong username or password");
+      } else {
+        toast.error("Something went wrong");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

@@ -20,13 +20,15 @@ const Logout = ({ open, setOpen }: Props) => {
   const handleClose = () => setOpen(false);
 
   const handleLogOut = async () => {
-    // Fake Delay
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    localStorage.removeItem("token");
 
     toast.success("Logged out successfully");
     changeUserName("");
     setLoading(false);
+
+    // Fake Delay
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     window.location.reload();
   };
 

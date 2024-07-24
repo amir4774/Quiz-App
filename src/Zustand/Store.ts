@@ -14,6 +14,7 @@ export interface ResultType {
 export interface Store {
   mode: string;
   userName: string;
+  token: string;
   examParams: ExamParamsType;
   result: ResultType;
   changeMode: () => void;
@@ -21,22 +22,24 @@ export interface Store {
   changeExamParams: (params: ExamParamsType) => void;
   changeResult: (status: "correct" | "incorrect") => void;
   resetResult: () => void;
+  changeToken: (newToken: string) => void;
 }
 
 const useStore = create<Store>((set, get) => ({
-  mode: sessionStorage.getItem("mode") || "dark",
-  userName: sessionStorage.getItem("userName") || "",
+  mode: localStorage.getItem("mode") || "dark",
+  userName: localStorage.getItem("userName") || "",
+  token: localStorage.getItem("token") || "",
   examParams: { category: "", difficulty: "", limit: 0 },
   result: { correct: 0, incorrect: 0 },
 
   changeMode: () => {
     set((state) => ({ mode: state.mode === "light" ? "dark" : "light" }));
-    sessionStorage.setItem("mode", get().mode);
+    localStorage.setItem("mode", get().mode);
   },
 
   changeUserName: (name: string) => {
     set(() => ({ userName: name }));
-    sessionStorage.setItem("userName", name);
+    localStorage.setItem("userName", name);
   },
 
   changeExamParams: (params: ExamParamsType) =>
@@ -48,6 +51,11 @@ const useStore = create<Store>((set, get) => ({
     })),
 
   resetResult: () => set(() => ({ result: { correct: 0, incorrect: 0 } })),
+
+  changeToken: (newToken: string) =>
+    set(() => ({
+      token: newToken,
+    })),
 }));
 
 export default useStore;

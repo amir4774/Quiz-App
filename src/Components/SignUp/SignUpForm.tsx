@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -19,6 +18,7 @@ import QuizGradTitle from "../QuizGradTitle";
 import useShowPassword from "../../Hooks/useShowPassword";
 import { SignUpData } from "../SignUp_Login/Interfaces";
 import "../SignUp_Login/SignUp_Login_Style.css";
+import InternalApi from "../../Services/InternalApi";
 
 const SignUpForm = () => {
   const [loading, setLoading] = useState(false);
@@ -40,11 +40,16 @@ const SignUpForm = () => {
         return;
       }
 
-      axios.post("http://127.0.0.1:8000/register/", {
+      InternalApi().post("register/", {
         username: data.name,
         password: data.password,
       });
-      
+
+      // axios.post("http://127.0.0.1:8000/register/", {
+      //   username: data.name,
+      //   password: data.password,
+      // });
+
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -129,7 +134,7 @@ const SignUpForm = () => {
           </FormControl>
 
           <Button variant="useful" type="submit" disabled={loading}>
-            {loading ? "Loading..." : "Login"}
+            {loading ? "Loading..." : "Sign up"}
           </Button>
         </FormGroup>
       </form>

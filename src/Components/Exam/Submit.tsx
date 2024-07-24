@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import {
   Box,
   Button,
@@ -12,30 +11,45 @@ import {
 } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 import useStore from "../../Zustand/Store";
-import useResult from "../../Hooks/useResult";
 import { SubmitType } from "./Interfaces";
+import InternalApi from "../../Services/InternalApi";
 
 const Submit = ({ open, setOpen }: SubmitType) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { examParams, result } = useStore();
-  const { percent } = useResult();
 
   const handleClose = () => setOpen(false);
 
   const handleSubmit = async () => {
     try {
       setLoading(true);
-      
-      axios.post("http://127.0.0.1:8000/exam/", {
-        rate: percent,
+
+      const values = {
+        rate: (result.correct / examParams.limit) * 100,
         question_numbers: examParams.limit,
         category: examParams.category,
         difficulty: examParams.difficulty,
         corrects: result.correct,
         examiner: 1,
-      });
-      
+      };
+
+      const { data } = await InternalApi().post("exam/", values);
+
+      // const { data } = await axios.post(
+      //   "http://127.0.0.1:8000/exam/",
+      //   {
+      //     rate: (result.correct / examParams.limit) * 100,
+      //     question_numbers: examParams.limit,
+      //     category: examParams.category,
+      //     difficulty: examParams.difficulty,
+      //     corrects: result.correct,
+      //     examiner: 1,
+      //   },
+      //   { headers: { Authorization: `Bearer ${token}` } }
+      // );
+
+      console.log(data);
       navigate("/result");
     } catch (error) {
       console.log(error);
