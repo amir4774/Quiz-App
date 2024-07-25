@@ -18,7 +18,6 @@ import QuizGradTitle from "../QuizGradTitle";
 import useShowPassword from "../../Hooks/useShowPassword";
 import { SignUpData } from "../SignUp_Login/Interfaces";
 import "../SignUp_Login/SignUp_Login_Style.css";
-import InternalApi from "../../Services/InternalApi";
 
 const SignUpForm = () => {
   const [loading, setLoading] = useState(false);
@@ -40,15 +39,8 @@ const SignUpForm = () => {
         return;
       }
 
-      InternalApi().post("register/", {
-        username: data.name,
-        password: data.password,
-      });
-
-      // axios.post("http://127.0.0.1:8000/register/", {
-      //   username: data.name,
-      //   password: data.password,
-      // });
+      // Fake delay
+      await new Promise((res) => setTimeout(res, 2000));
 
       navigate("/");
     } catch (err) {

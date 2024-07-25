@@ -17,14 +17,13 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import QuizGradTitle from "../QuizGradTitle";
 import useStore from "../../Zustand/Store";
 import useShowPassword from "../../Hooks/useShowPassword";
-import InternalApi from "../../Services/InternalApi";
 import { LoginData } from "../SignUp_Login/Interfaces";
 import "../SignUp_Login/SignUp_Login_Style.css";
 
 const LoginForm = () => {
   const showPassword = useShowPassword(false);
   const [loading, setLoading] = useState(false);
-  const { changeUserName, changeToken } = useStore();
+  const { changeUserName } = useStore();
   const navigate = useNavigate();
 
   const {
@@ -37,21 +36,11 @@ const LoginForm = () => {
     try {
       setLoading(true);
 
-      const res = await InternalApi().post("login/", {
-        username: data.name,
-        password: data.password,
-      });
-
-      // const res = await axios.post("http://127.0.0.1:8000/login/", {
-      //   username: data.name,
-      //   password: data.password,
-      // });
+      // Fake delay
+      await new Promise((res) => setTimeout(res, 2000));
 
       toast.success(`!Welcome back, ${data.name}`);
       changeUserName(data.name);
-
-      localStorage.setItem("token", res.data.access);
-      changeToken(res.data.access);
 
       navigate("/");
     } catch (error: any) {

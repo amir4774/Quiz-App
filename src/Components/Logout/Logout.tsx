@@ -21,14 +21,13 @@ const Logout = ({ open, setOpen }: Props) => {
 
   const handleLogOut = async () => {
     setLoading(true);
-    localStorage.removeItem("token");
 
     toast.success("Logged out successfully");
     changeUserName("");
     setLoading(false);
 
     // Fake Delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     window.location.reload();
   };
 
