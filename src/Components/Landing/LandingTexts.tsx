@@ -9,7 +9,7 @@ const LandingTexts = () => {
       <LandingText text="for each question" />
 
       <Typography my={3} pl={2} borderLeft="5px solid #FCC822" color="#828282">
-        We help you prepare for exams and quizes
+        We help you prepare for exams and quizzes
       </Typography>
     </div>
   );
