@@ -1,11 +1,12 @@
 {
-  "name": "quize-app",
+  "name": "quiz-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "serve": "serve dist",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -46,6 +47,7 @@
     "jsdom": "^24.0.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.0",
+    "vite-plugin-pwa": "^0.20.1",
     "vitest": "^1.6.0"
   }
 }
