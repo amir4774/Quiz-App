@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import {
@@ -42,11 +42,6 @@ const LoginForm = () => {
         password: data.password,
       });
 
-      // const res = await axios.post("http://127.0.0.1:8000/login/", {
-      //   username: data.name,
-      //   password: data.password,
-      // });
-
       toast.success(`!Welcome back, ${data.name}`);
       changeUserName(data.name);
 
@@ -72,6 +67,12 @@ const LoginForm = () => {
       <Typography color="text.secondary">
         Welcome back! <br /> Please Login to your account.
       </Typography>
+
+      <Link to="/sign-up" style={{ display: 'inline-block', marginTop: '8px' }}>
+        <Typography color="text.primary" fontWeight="bold">
+          don't have an account?
+        </Typography>
+      </Link>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormGroup sx={{ gap: "20px", mt: 4 }}>

@@ -18,5 +18,10 @@ a:hover {
 }
 
 .dark {
-  background-color: #232D3F;
+  background-color: #232d3f;
+}
+
+.Toastify__toast-container {
+  min-width: fit-content;
+  padding: 0 10px;
 }

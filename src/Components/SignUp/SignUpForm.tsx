@@ -40,17 +40,13 @@ const SignUpForm = () => {
         return;
       }
 
-      InternalApi().post("register/", {
+      await InternalApi().post("register/", {
         username: data.name,
         password: data.password,
       });
 
-      // axios.post("http://127.0.0.1:8000/register/", {
-      //   username: data.name,
-      //   password: data.password,
-      // });
-
-      navigate("/");
+      toast.success('Account created successfully. Please log in.');
+      navigate("/login");
     } catch (err) {
       console.log(err);
     } finally {
