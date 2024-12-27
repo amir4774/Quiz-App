@@ -1,0 +1,22 @@
+{
+    "platform": "django",
+    "django": {
+      "pythonVersion": "3.12",
+      "collectStatic": false,
+      "compileMessages": false,
+      "modifySettings": true,
+      "timezone": "Asia/Tehran"
+      
+    },
+    "app": "quez",
+    "disks": [
+      {
+        "name": "staticfiles",
+        "mountTo": "staticfiles"
+      },
+      {
+        "name": "media",
+        "mountTo": "media"
+      }
+    ]
+  }
