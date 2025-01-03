@@ -18,7 +18,7 @@ const Landing = () => {
           <LandingTexts />
 
           <Link to="/create-exam">
-            <Button variant="useful">Start solving</Button>
+            <Button variant="useful">Start Solving</Button>
           </Link>
           <Button
             startIcon={<ArrowDropDownIcon />}
