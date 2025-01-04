@@ -14,6 +14,7 @@ import {
 import CardTitle from "./CardTitle";
 import { DifficultyProps } from "../Interfaces";
 import CardError from "./CardError";
+import useGlobalTranslation from "../../../Hooks/useGlobalTranslation";
 
 const difficulties = ["Easy", "Medium", "Hard", "Random"];
 
@@ -24,6 +25,7 @@ const DifficultyandLimit = ({
 }: DifficultyProps) => {
   const [difficultyValue, setDifficultyValue] = useState("");
   const theme = useTheme();
+  const { t } = useGlobalTranslation();
 
   const handleChangeDifficulty = (e: SelectChangeEvent) => {
     setDifficultyValue(e.target.value);
@@ -39,7 +41,7 @@ const DifficultyandLimit = ({
         }}
       >
         <CardContent>
-          <CardTitle text="Choose Difficulty and Limit" />
+          <CardTitle text={t("Choose Difficulty and Limit")} />
 
           <Stack
             direction={{ xs: "column", md: "row" }}
@@ -47,7 +49,9 @@ const DifficultyandLimit = ({
           >
             <Stack direction="column" width="100%">
               <FormControl fullWidth>
-                <InputLabel id="select-difficulty">Difficulty</InputLabel>
+                <InputLabel id="select-difficulty">
+                  {t("Difficulty")}
+                </InputLabel>
                 <Select
                   labelId="select-difficulty"
                   label="Difficulty"
@@ -71,7 +75,7 @@ const DifficultyandLimit = ({
                         color: "text.secondary",
                       }}
                     >
-                      {difficulty}
+                      {t(`${difficulty}`)}
                     </MenuItem>
                   ))}
                 </Select>
@@ -83,7 +87,7 @@ const DifficultyandLimit = ({
             <Stack direction="column" width="100%">
               <FormControl fullWidth>
                 <TextField
-                  label="Limit"
+                  label={t("Limit")}
                   type="number"
                   InputProps={{
                     style: {

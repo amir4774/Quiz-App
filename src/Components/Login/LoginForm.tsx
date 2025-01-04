@@ -13,19 +13,21 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { AxiosResponse, isAxiosError } from "axios";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import QuizGradTitle from "../QuizGradTitle";
 import useStore from "../../Zustand/Store";
 import useShowPassword from "../../Hooks/useShowPassword";
 import InternalApi from "../../Services/InternalApi";
-import { LoginData } from "../SignUp_Login/Interfaces";
+import { LoginData, LoginResponse } from "../SignUp_Login/Interfaces";
 import "../SignUp_Login/SignUp_Login_Style.css";
-
+import useGlobalTranslation from "../../Hooks/useGlobalTranslation";
 const LoginForm = () => {
   const showPassword = useShowPassword(false);
   const [loading, setLoading] = useState(false);
   const { changeUserName, changeToken } = useStore();
   const navigate = useNavigate();
+  const { t } = useGlobalTranslation();
 
   const {
     register,
@@ -37,23 +39,30 @@ const LoginForm = () => {
     try {
       setLoading(true);
 
-      const res = await InternalApi().post("login/", {
-        username: data.name,
-        password: data.password,
-      });
+      const res: AxiosResponse<LoginResponse> = await InternalApi().post(
+        "login/",
+        {
+          username: data.name,
+          password: data.password,
+        }
+      );
 
-      toast.success(`!Welcome back, ${data.name}`);
+      toast.success(t("Welcome back!") + ` ${data.name}`);
       changeUserName(data.name);
 
       localStorage.setItem("token", res.data.access);
       changeToken(res.data.access);
 
       navigate("/");
-    } catch (error: any) {
-      if (error.response?.status == 401) {
-        toast.error("Wrong username or password");
+    } catch (error: unknown) {
+      if (isAxiosError(error)) {
+        if (error.response?.status === 401) {
+          toast.error(t("Wrong username or password"));
+        } else {
+          toast.error(t("Something went wrong"));
+        }
       } else {
-        toast.error("Something went wrong");
+        toast.error(t("An unexpected error occurred"));
       }
     } finally {
       setLoading(false);
@@ -65,12 +74,12 @@ const LoginForm = () => {
       <QuizGradTitle />
 
       <Typography color="text.secondary">
-        Welcome back! <br /> Please Login to your account.
+        {t("Welcome back!")} <br /> {t("Please Login to your account.")}
       </Typography>
 
-      <Link to="/sign-up" style={{ display: 'inline-block', marginTop: '8px' }}>
+      <Link to="/sign-up" style={{ display: "inline-block", marginTop: "8px" }}>
         <Typography color="text.primary" fontWeight="bold">
-          don't have an account?
+          {t("don't have an account?")}
         </Typography>
       </Link>
 
@@ -78,8 +87,8 @@ const LoginForm = () => {
         <FormGroup sx={{ gap: "20px", mt: 4 }}>
           <FormControl fullWidth>
             <TextField
-              label="Name"
-              {...register("name", { required: "Name is required" })}
+              label={t("Name")}
+              {...register("name", { required: t("Name is required") })}
               name="name"
             />
             <FormHelperText error>{errors.name?.message}</FormHelperText>
@@ -88,14 +97,14 @@ const LoginForm = () => {
           <FormControl fullWidth>
             <TextField
               {...register("password", {
-                required: "Password is required",
+                required: t("Password is required"),
                 minLength: {
                   value: 8,
-                  message: "Password must be at least 8 characters",
+                  message: t("Password must be at least 8 characters"),
                 },
               })}
               name="password"
-              label="Password"
+              label={t("Password")}
               type={showPassword.value ? "text" : "password"}
               InputProps={{
                 endAdornment: (
@@ -111,7 +120,7 @@ const LoginForm = () => {
           </FormControl>
 
           <Button variant="useful" type="submit" disabled={loading}>
-            {loading ? "Loading..." : "Login"}
+            {loading ? t("Loading") : t("Login")}
           </Button>
         </FormGroup>
       </form>

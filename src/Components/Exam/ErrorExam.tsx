@@ -4,8 +4,11 @@ import ErrorsTitle from "../Errors/ErrorsTitle";
 import errorLogo from "../../assets/Error.png";
 import ErrorsContainer from "../Errors/ErrorsContainer";
 import ErrorsLogo from "../Errors/ErrorsLogo";
+import useGlobalTranslation from "../../Hooks/useGlobalTranslation";
 
 const ErrorExam = () => {
+  const { t } = useGlobalTranslation();
+
   return (
     <div>
       <ErrorsContainer margin={{ xs: -8, md: -3 }}>
@@ -16,11 +19,11 @@ const ErrorExam = () => {
             <ErrorsTitle />
 
             <Typography color="#828282" my={3}>
-              Sorry! Something went wrong!
+              {t("Sorry! Something went wrong!")}
             </Typography>
 
             <Link to="/create-exam">
-              <Button fullWidth>Back</Button>
+              <Button fullWidth>{t("Back")}</Button>
             </Link>
           </Box>
         </>

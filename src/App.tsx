@@ -40,6 +40,7 @@ const App = () => {
         theme={mode === "light" ? "light" : "dark"}
         toastStyle={{
           backgroundColor: mode === "light" ? "#F9F9F9" : "#232D3F",
+          fontFamily: 'IranSans',
         }}
       />
     </div>

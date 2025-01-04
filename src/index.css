@@ -1,3 +1,57 @@
+@font-face {
+  font-family: "IranSans";
+  src: url(./assets/fonts/IRANSansXRegular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url(./assets/fonts/IRANSansXBlack.ttf);
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url(./assets/fonts/IRANSansXBold.ttf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url(./assets/fonts/IRANSansXDemiBold.ttf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url(./assets/fonts/IRANSansXExtraBold.ttf);
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url(./assets/fonts/IRANSansXLight.ttf);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url(./assets/fonts/IRANSansXMedium.ttf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url(./assets/fonts/IRANSansXThin.ttf);
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "IranSans";
+  src: url(./assets/fonts/IRANSansXUltraLight.ttf);
+  font-weight: 200;
+}
+
 * {
   padding: 0;
   margin: 0;

@@ -13,6 +13,7 @@ import {
 import CardTitle from "./CardTitle";
 import { CategoryProps } from "../Interfaces";
 import CardError from "./CardError";
+import useGlobalTranslation from "../../../Hooks/useGlobalTranslation";
 
 gsap.registerPlugin(useGSAP);
 
@@ -29,6 +30,7 @@ const categories = [
 const Category = ({ register, errors }: CategoryProps) => {
   const theme = useTheme();
   const { contextSafe } = useGSAP();
+  const { t } = useGlobalTranslation();
 
   const handleClick = contextSafe((category: string) => {
     gsap.fromTo(
@@ -47,7 +49,7 @@ const Category = ({ register, errors }: CategoryProps) => {
         }}
       >
         <CardContent>
-          <CardTitle text="Choose your favorite category" />
+          <CardTitle text={t("Choose your favorite category")} />
 
           <FormControl variant="standard" sx={{ width: "100%" }}>
             <RadioGroup>

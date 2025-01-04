@@ -19,12 +19,14 @@ import useShowPassword from "../../Hooks/useShowPassword";
 import { SignUpData } from "../SignUp_Login/Interfaces";
 import "../SignUp_Login/SignUp_Login_Style.css";
 import InternalApi from "../../Services/InternalApi";
+import useGlobalTranslation from "../../Hooks/useGlobalTranslation";
 
 const SignUpForm = () => {
   const [loading, setLoading] = useState(false);
   const showPassword = useShowPassword(false);
   const showConfirmPassword = useShowPassword(false);
   const navigate = useNavigate();
+  const { t } = useGlobalTranslation();
 
   const {
     register,
@@ -36,7 +38,7 @@ const SignUpForm = () => {
     try {
       setLoading(true);
       if (data.password !== data.confirmPassword) {
-        toast.error("Passwords do not match");
+        toast.error(t("Passwords do not match"));
         return;
       }
 
@@ -45,7 +47,7 @@ const SignUpForm = () => {
         password: data.password,
       });
 
-      toast.success('Account created successfully. Please log in.');
+      toast.success(t("Account created successfully. Please log in."));
       navigate("/login");
     } catch (err) {
       console.log(err);
@@ -59,15 +61,15 @@ const SignUpForm = () => {
       <QuizGradTitle />
 
       <Typography color="text.secondary">
-        Welcome! <br /> Please create an account.
+        {t("Welcome!")} <br /> {t("Please create an account.")}
       </Typography>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormGroup sx={{ gap: "20px", mt: 4 }}>
           <FormControl fullWidth>
             <TextField
-              label="Name"
-              {...register("name", { required: "Name is required" })}
+              label={t("Name")}
+              {...register("name", { required: t("Name is required") })}
               name="name"
             />
             <FormHelperText error>{errors.name?.message}</FormHelperText>
@@ -76,14 +78,14 @@ const SignUpForm = () => {
           <FormControl fullWidth>
             <TextField
               {...register("password", {
-                required: "Password is required",
+                required: t("Password is required"),
                 minLength: {
                   value: 8,
-                  message: "Password must be at least 8 characters",
+                  message: t("Password must be at least 8 characters"),
                 },
               })}
               name="password"
-              label="Password"
+              label={t("Password")}
               type={showPassword.value ? "text" : "password"}
               InputProps={{
                 endAdornment: (
@@ -101,14 +103,14 @@ const SignUpForm = () => {
           <FormControl fullWidth>
             <TextField
               {...register("confirmPassword", {
-                required: "Confirm Password is required",
+                required: t("Confirm Password is required"),
                 minLength: {
                   value: 8,
-                  message: "Password must be at least 8 characters",
+                  message: t("Password must be at least 8 characters"),
                 },
               })}
               name="confirmPassword"
-              label="Confirm Password"
+              label={t("Confirm Password")}
               type={showConfirmPassword.value ? "text" : "password"}
               InputProps={{
                 endAdornment: (
@@ -130,7 +132,7 @@ const SignUpForm = () => {
           </FormControl>
 
           <Button variant="useful" type="submit" disabled={loading}>
-            {loading ? "Loading..." : "Sign up"}
+            {loading ? t("Loading") : t("Sign up")}
           </Button>
         </FormGroup>
       </form>

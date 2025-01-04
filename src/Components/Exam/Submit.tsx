@@ -13,11 +13,13 @@ import { CheckCircle } from "@mui/icons-material";
 import useStore from "../../Zustand/Store";
 import { SubmitType } from "./Interfaces";
 import InternalApi from "../../Services/InternalApi";
+import useGlobalTranslation from "../../Hooks/useGlobalTranslation";
 
 const Submit = ({ open, setOpen }: SubmitType) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { examParams, result } = useStore();
+  const { t } = useGlobalTranslation();
 
   const handleClose = () => setOpen(false);
 
@@ -34,9 +36,8 @@ const Submit = ({ open, setOpen }: SubmitType) => {
         examiner: 1,
       };
 
-      const { data } = await InternalApi().post("exam/", values);
+      await InternalApi().post("exam/", values);
 
-      console.log(data);
       navigate("/result");
     } catch (error) {
       console.log(error);
@@ -58,13 +59,13 @@ const Submit = ({ open, setOpen }: SubmitType) => {
             </Box>
 
             <Typography my={3} fontSize="20px">
-              Are you sure you want to submit the exam?
+              {t("Are you sure you want to submit the exam?")}
             </Typography>
           </DialogContentText>
 
           <DialogActions>
             <Button fullWidth variant="outlined" onClick={handleClose}>
-              No
+              {t("No")}
             </Button>
             <Button
               fullWidth
@@ -72,7 +73,7 @@ const Submit = ({ open, setOpen }: SubmitType) => {
               onClick={handleSubmit}
               disabled={loading}
             >
-              {loading ? "Loading..." : "Yes"}
+              {loading ? t("Loading...") : t("Yes")}
             </Button>
           </DialogActions>
         </DialogContent>

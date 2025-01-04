@@ -3,8 +3,11 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import LandingTexts from "../Components/Landing/LandingTexts";
 import logo from "../assets/Landing.png";
 import { Link } from "react-router-dom";
+import useGlobalTranslation from "../Hooks/useGlobalTranslation";
 
 const Landing = () => {
+  const { t } = useGlobalTranslation();
+
   return (
     <div>
       <Stack
@@ -18,13 +21,13 @@ const Landing = () => {
           <LandingTexts />
 
           <Link to="/create-exam">
-            <Button variant="useful">Start Solving</Button>
+            <Button variant="useful">{t("Start Solving")}</Button>
           </Link>
           <Button
             startIcon={<ArrowDropDownIcon />}
             sx={{ ml: 2, p: "8px 15px" }}
           >
-            know more
+            {t("know more")}
           </Button>
         </Box>
 

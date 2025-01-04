@@ -23,6 +23,9 @@ export const LightTheme = createTheme({
       default: "#FFDC62",
     },
   },
+  typography: {
+    fontFamily: '"IranSans", Arial, sans-serif',
+  },
   components: {
     MuiButton: {
       styleOverrides: {
@@ -62,6 +65,9 @@ export const DarkTheme = createTheme({
     background: {
       default: "#395886",
     },
+  },
+  typography: {
+    fontFamily: '"IranSans", Arial, sans-serif',
   },
   components: {
     MuiButton: {

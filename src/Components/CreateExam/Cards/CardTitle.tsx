@@ -45,6 +45,7 @@ const CardTitle = ({ text }: { text: string }) => {
       fontSize={20}
       mb={3}
       ref={textRef}
+      sx={{ userSelect: "none" }}
     />
   );
 };

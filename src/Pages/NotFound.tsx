@@ -4,8 +4,11 @@ import ErrorsTitle from "../Components/Errors/ErrorsTitle";
 import ErrorsContainer from "../Components/Errors/ErrorsContainer";
 import ErrorsLogo from "../Components/Errors/ErrorsLogo";
 import notFoundLogo from "../assets/NotFound.png";
+import useGlobalTranslation from "../Hooks/useGlobalTranslation";
 
 const NotFound = () => {
+  const { t } = useGlobalTranslation();
+
   return (
     <div>
       <ErrorsContainer margin={{ xs: -5, md: -3 }}>
@@ -16,17 +19,17 @@ const NotFound = () => {
             <ErrorsTitle />
 
             <Typography color="text.secondary" fontSize={20} mb={2}>
-              Page not found
+              {t("Page not found")}
             </Typography>
 
             <Typography color="#828282" my={3}>
-              This Page doesn`t exist or was removed! <br /> We suggest you back
-              to home.
+              {t("This Page doesn`t exist or was removed!")} <br />
+              {t("We suggest you back to home.")}
             </Typography>
 
             <Link to="/">
               <Button fullWidth sx={{ mb: { xs: 5, md: 0 } }}>
-                Back to home
+                {t("Back to home")}
               </Button>
             </Link>
           </Box>

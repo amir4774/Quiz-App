@@ -2,9 +2,12 @@ import { useState } from "react";
 import { ListItem, ListItemButton, ListItemText } from "@mui/material";
 import Logout from "../../Logout/Logout";
 import { LoginListItemProps } from "../Interfaces";
+import useGlobalTranslation from "../../../Hooks/useGlobalTranslation";
 
 const LoginListItem = ({ title }: LoginListItemProps) => {
   const [openLogout, setOpenLogout] = useState(false);
+
+  const { t } = useGlobalTranslation();
 
   return (
     <>
@@ -15,7 +18,7 @@ const LoginListItem = ({ title }: LoginListItemProps) => {
         >
           <ListItemText
             sx={{ fontWeight: 600, color: "text.primary" }}
-            primary={title}
+            primary={t(title)}
           />
         </ListItemButton>
       </ListItem>

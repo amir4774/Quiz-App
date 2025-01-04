@@ -11,11 +11,13 @@ import {
 } from "@mui/material";
 import logoutLogo from "../../assets/logout.png";
 import useStore from "../../Zustand/Store";
+import useGlobalTranslation from "../../Hooks/useGlobalTranslation";
 import { Props } from "./Interfaces";
 
 const Logout = ({ open, setOpen }: Props) => {
   const [loading, setLoading] = useState(false);
   const { changeUserName } = useStore();
+  const { t } = useGlobalTranslation();
 
   const handleClose = () => setOpen(false);
 
@@ -23,13 +25,12 @@ const Logout = ({ open, setOpen }: Props) => {
     setLoading(true);
     localStorage.removeItem("token");
 
-    toast.success("Logged out successfully");
+    toast.success(t("Logged out successfully"));
     changeUserName("");
     setLoading(false);
 
     // Fake Delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    window.location.reload();
   };
 
   return (
@@ -39,13 +40,13 @@ const Logout = ({ open, setOpen }: Props) => {
           <DialogContentText textAlign="center">
             <Box component="img" src={logoutLogo} height="200px" />
             <Typography color="text.secondary" fontSize={"20px"} my={3}>
-              Are you sure you want to logout?
+              {t("Are you sure you want to logout?")}
             </Typography>
           </DialogContentText>
 
           <DialogActions>
             <Button fullWidth variant="outlined" onClick={handleClose}>
-              No
+              {t("No")}
             </Button>
             <Button
               fullWidth
@@ -53,7 +54,7 @@ const Logout = ({ open, setOpen }: Props) => {
               onClick={handleLogOut}
               disabled={loading}
             >
-              {loading ? "Loading..." : "Yes"}
+              {loading ? t("Loading...") : t("Yes")}
             </Button>
           </DialogActions>
         </DialogContent>

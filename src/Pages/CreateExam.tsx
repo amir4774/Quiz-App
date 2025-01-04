@@ -7,12 +7,14 @@ import Category from "../Components/CreateExam/Cards/Category";
 import DifficultyandLimit from "../Components/CreateExam/Cards/DifficultyandLimit";
 import { FormInputs } from "../Components/CreateExam/Interfaces";
 import useStore from "../Zustand/Store";
+import useGlobalTranslation from "../Hooks/useGlobalTranslation";
 
 const steps = ["Category", "Difficulty", "Limit"];
 
 const CreateExam = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
   const [completed, setCompleted] = useState<boolean[]>([]);
+  const { t } = useGlobalTranslation();
 
   const { changeExamParams } = useStore();
   const navigate = useNavigate();
@@ -96,7 +98,7 @@ const CreateExam = () => {
             variant="useful"
             sx={{ my: 3, width: { xs: "100%", md: "150px" }, float: "right" }}
           >
-            Start Quiz
+            {t("Start Quiz")}
           </Button>
         </form>
       </Box>

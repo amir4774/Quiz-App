@@ -4,6 +4,7 @@ import { ArrowLeftRounded, ArrowRightRounded } from "@mui/icons-material";
 import Submit from "./Submit";
 import useStore from "../../Zustand/Store";
 import { SliderButtonType } from "./Interfaces";
+import useGlobalTranslation from "../../Hooks/useGlobalTranslation";
 
 const SliderButton = ({ questionNumber }: SliderButtonType) => {
   const [openSubmit, setOpenSubmit] = useState(false);
@@ -12,6 +13,7 @@ const SliderButton = ({ questionNumber }: SliderButtonType) => {
     () => questionNumber === examParams.limit,
     [questionNumber]
   );
+  const { t } = useGlobalTranslation();
 
   const handleClick = () => setOpenSubmit(true);
 
@@ -29,7 +31,7 @@ const SliderButton = ({ questionNumber }: SliderButtonType) => {
           startIcon={<ArrowLeftRounded />}
           disabled={questionNumber === 1}
         >
-          Back
+          {t("Back")}
         </Button>
 
         {isLastQuestion ? (
@@ -38,7 +40,7 @@ const SliderButton = ({ questionNumber }: SliderButtonType) => {
             endIcon={<ArrowRightRounded />}
             onClick={handleClick}
           >
-            Submit
+            {t("Submit")}
           </Button>
         ) : (
           <Button
@@ -46,7 +48,7 @@ const SliderButton = ({ questionNumber }: SliderButtonType) => {
             sx={{ padding: "7px 25px" }}
             endIcon={<ArrowRightRounded />}
           >
-            Next
+            {t("Next")}
           </Button>
         )}
       </Box>
