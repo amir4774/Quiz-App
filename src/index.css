@@ -58,6 +58,21 @@
   box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+  background-color: #fcc822;
+  border-radius: 0.4rem;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #9db2bf;
+  border-radius: 0.4rem;
+}
+
 a {
   text-decoration: none;
 }
