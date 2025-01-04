@@ -13,6 +13,7 @@ import NavTitle from "./NavTitle";
 import SignUpListItem from "./SignUpButtons/SignUpListItem";
 import LoginListItem from "./Login_Logout/LoginListItem";
 import useStore from "../../Zustand/Store";
+import ChangeLang from "./ChangeLang";
 
 const MobileMenu = () => {
   const { userName, changeMode } = useStore();
@@ -44,6 +45,7 @@ const MobileMenu = () => {
                   ? "text.secondary"
                   : "text.primary",
               textAlign: "center",
+              pt: 2,
             }}
             onClick={changeMode}
           >
@@ -68,6 +70,8 @@ const MobileMenu = () => {
         )}
 
         {!userName && <SignUpListItem />}
+
+        <ChangeLang />
       </List>
     </Box>
   );

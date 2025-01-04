@@ -37,6 +37,8 @@
   "Password": "Password",
   "Login": "Login",
   "Logout": "Logout",
+  "en": "en",
+  "fa": "fa",
   "Sign up": "Sign up",
   "Confirm Password": "Confirm Password",
   "Wrong username or password": "Wrong username or password",

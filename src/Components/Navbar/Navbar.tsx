@@ -18,6 +18,7 @@ import LoginTooltip from "./Login_Logout/LoginTooltip";
 import LoginButton from "./Login_Logout/LoginButton";
 import MobileMenu from "./MobileMenu";
 import SignUpButton from "./SignUpButtons/SignUpButton";
+import ChangeLang from "./ChangeLang";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -68,7 +69,11 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
             <NavTitle text="Grad" spanText="Quiz" />
           </Box>
-          <Box sx={{ display: { xs: "none", sm: "flex" } }} alignItems="center">
+          <Box
+            sx={{ display: { xs: "none", sm: "flex" } }}
+            alignItems="center"
+            gap={2}
+          >
             <Button
               variant="text"
               sx={{
@@ -76,7 +81,6 @@ const Navbar = () => {
                   theme.palette.mode === "light"
                     ? "text.secondary"
                     : "text.primary",
-                mx: 2,
               }}
               onClick={changeMode}
             >
@@ -88,10 +92,10 @@ const Navbar = () => {
             </Button>
 
             {userName && (
-              <Typography margin="0 40px 0 10px" color="text.primary">
-                {userName}
-              </Typography>
+              <Typography color="text.primary">{userName}</Typography>
             )}
+
+            <ChangeLang />
 
             {userName ? (
               <LoginButton title="Logout" />

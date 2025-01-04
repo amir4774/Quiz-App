@@ -11,7 +11,7 @@ const initializeI18n = async () => {
     .use(LanguageDetector) // Auto detects language based on browser settings
     .init({
       fallbackLng: "en", // Default to English if language not found
-      lng: "fa", // Default language
+      lng: "en", // Default language
       debug: true, // Enable debugging for development
 
       // Load translations from JSON files
