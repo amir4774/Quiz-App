@@ -14,6 +14,7 @@ import SignUpListItem from "./SignUpButtons/SignUpListItem";
 import LoginListItem from "./Login_Logout/LoginListItem";
 import useStore from "../../Zustand/Store";
 import ChangeLang from "./ChangeLang";
+import UserExamsButton from "./UserExamsButton";
 
 const MobileMenu = () => {
   const { userName, changeMode } = useStore();
@@ -36,6 +37,8 @@ const MobileMenu = () => {
             />
           </ListItem>
         )}
+
+        {userName && <UserExamsButton />}
 
         <ListItem>
           <ListItemButton

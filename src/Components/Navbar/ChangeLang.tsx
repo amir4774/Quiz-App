@@ -26,7 +26,7 @@ const ChangeLang = () => {
         size="small"
         value={lang}
         onChange={handleChangeLang}
-        sx={{ color: "text.secondary" }}
+        sx={{ color: "text.secondary", textAlign: "center" }}
       >
         <MenuItem sx={{ color: "text.secondary" }} value="en">{t("en")}</MenuItem>
         <MenuItem sx={{ color: "text.secondary" }} value="fa">{t("fa")}</MenuItem>

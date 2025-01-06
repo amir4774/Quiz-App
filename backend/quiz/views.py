@@ -9,6 +9,11 @@ from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework_simplejwt.authentication import JWTAuthentication 
 from .serializer import UserSerializer
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 
 
 class Exam_get_post(generics.ListCreateAPIView):
@@ -31,5 +36,19 @@ class UserRegistrationView(generics.CreateAPIView):
     authentication_classes = [JWTAuthentication]
 
 
+# class UserExam(APIview) :
+    
+#     def get(request):
+#         user = request.user
+
+#         print(user)
 
 
+
+class UserExamsListView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        exams = Exam.objects.filter(examiner=request.user)
+        serializer = ExamSerializer(exams, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

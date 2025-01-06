@@ -1,10 +1,21 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import useGlobalTranslation from "../../Hooks/useGlobalTranslation";
 
 const PlayAgain = () => {
+  const { t } = useGlobalTranslation();
+
   return (
     <Box>
-      <Typography textAlign="center" mb={3} fontSize={20} fontWeight={600} color="text.secondary">Do you want to play again?</Typography>
+      <Typography
+        textAlign="center"
+        mb={3}
+        fontSize={20}
+        fontWeight={600}
+        color="text.secondary"
+      >
+        {t("Do you want to play again?")}
+      </Typography>
 
       <Stack
         width="100%"
@@ -17,7 +28,7 @@ const PlayAgain = () => {
         <Box width={{ xs: "90%", md: "30%" }}>
           <Link to="/">
             <Button variant="outlined" fullWidth>
-              No
+              {t("No")}
             </Button>
           </Link>
         </Box>
@@ -25,7 +36,7 @@ const PlayAgain = () => {
         <Box width={{ xs: "90%", md: "30%" }}>
           <Link to="/create-exam">
             <Button variant="useful" fullWidth>
-              Yes
+              {t("Yes")}
             </Button>
           </Link>
         </Box>

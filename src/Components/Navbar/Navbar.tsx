@@ -19,6 +19,7 @@ import LoginButton from "./Login_Logout/LoginButton";
 import MobileMenu from "./MobileMenu";
 import SignUpButton from "./SignUpButtons/SignUpButton";
 import ChangeLang from "./ChangeLang";
+import UserExamsButton from "./UserExamsButton";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -96,6 +97,8 @@ const Navbar = () => {
             )}
 
             <ChangeLang />
+
+            <UserExamsButton />
 
             {userName ? (
               <LoginButton title="Logout" />

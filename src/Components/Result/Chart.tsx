@@ -3,6 +3,7 @@ import { useTheme } from "@mui/material";
 import { Cell, Pie, PieChart, Tooltip } from "recharts";
 import useStore from "../../Zustand/Store";
 import useResult from "../../Hooks/useResult";
+import useGlobalTranslation from "../../Hooks/useGlobalTranslation";
 
 const COLORS = ["#00C49F", "#f00", "#ddd"];
 
@@ -10,12 +11,13 @@ const Chart = () => {
   const theme = useTheme();
   const { result } = useStore();
   const { ommited } = useResult();
+  const { t } = useGlobalTranslation();
 
   const data = useMemo(() => {
     return [
-      { name: "Correct", value: result.correct },
-      { name: "Incorrect", value: result.incorrect },
-      { name: "Omitted", value: ommited },
+      { name: t("Correct"), value: result.correct },
+      { name: t("Incorrect"), value: result.incorrect },
+      { name: t("Omitted"), value: ommited },
     ];
   }, []);
 
