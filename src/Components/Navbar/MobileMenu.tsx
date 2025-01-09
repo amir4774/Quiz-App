@@ -38,8 +38,6 @@ const MobileMenu = () => {
           </ListItem>
         )}
 
-        {userName && <UserExamsButton />}
-
         <ListItem>
           <ListItemButton
             sx={{
@@ -63,6 +61,8 @@ const MobileMenu = () => {
             />
           </ListItemButton>
         </ListItem>
+
+        {userName && <UserExamsButton variant="text" />}
 
         {userName ? (
           <LoginListItem title="Logout" />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FormControl,
   MenuItem,
@@ -12,6 +12,12 @@ const currentLang = localStorage.getItem("i18nextLng") || "en";
 const ChangeLang = () => {
   const [lang, setLang] = useState(currentLang);
   const { t, i18n } = useGlobalTranslation();
+
+  useEffect(() => {
+    if (i18n.language !== lang) {
+      i18n.changeLanguage(lang);
+    }
+  }, [lang, i18n]);
 
   const handleChangeLang = async (event: SelectChangeEvent) => {
     const newLang = event.target.value;
@@ -28,8 +34,12 @@ const ChangeLang = () => {
         onChange={handleChangeLang}
         sx={{ color: "text.secondary", textAlign: "center" }}
       >
-        <MenuItem sx={{ color: "text.secondary" }} value="en">{t("en")}</MenuItem>
-        <MenuItem sx={{ color: "text.secondary" }} value="fa">{t("fa")}</MenuItem>
+        <MenuItem sx={{ color: "text.secondary" }} value="en">
+          {t("en")}
+        </MenuItem>
+        <MenuItem sx={{ color: "text.secondary" }} value="fa">
+          {t("fa")}
+        </MenuItem>
       </Select>
     </FormControl>
   );

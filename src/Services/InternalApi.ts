@@ -1,6 +1,5 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { internalApi } from "./config";
-import { toast } from "react-toastify";
 
 const InternalApi = () => {
   const axiosInstance = axios.create({
@@ -12,12 +11,6 @@ const InternalApi = () => {
       return res;
     },
     (error) => {
-      if (error.response.status === 400) {
-        if (error.response.data.username) {
-          toast.error("Username already exists");
-        }
-      }
-
       console.log(error);
       return Promise.reject(error);
     }

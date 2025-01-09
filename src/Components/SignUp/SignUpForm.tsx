@@ -20,6 +20,7 @@ import { SignUpData } from "../SignUp_Login/Interfaces";
 import "../SignUp_Login/SignUp_Login_Style.css";
 import InternalApi from "../../Services/InternalApi";
 import useGlobalTranslation from "../../Hooks/useGlobalTranslation";
+import { AxiosError } from "axios";
 
 const SignUpForm = () => {
   const [loading, setLoading] = useState(false);
@@ -49,7 +50,12 @@ const SignUpForm = () => {
 
       toast.success(t("Account created successfully. Please log in."));
       navigate("/login");
-    } catch (err) {
+    } catch (err: AxiosError | any) {
+      if (err.response.status === 400) {
+        if (err.response.data.username) {
+          toast.error(t("Username already exists"));
+        }
+      }
       console.log(err);
     } finally {
       setLoading(false);

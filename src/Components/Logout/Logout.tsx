@@ -31,6 +31,7 @@ const Logout = ({ open, setOpen }: Props) => {
 
     // Fake Delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
+    window.location.reload()
   };
 
   return (

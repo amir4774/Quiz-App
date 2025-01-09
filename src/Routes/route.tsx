@@ -4,6 +4,7 @@ import Private from "./Private";
 import ExamPrivate from "./ExamPrivate";
 import MainLayout from "../Components/Layout/MainLayout";
 import NotFound from "../Pages/NotFound";
+import UserExams from "../Pages/UserExams";
 const Landing = lazy(() => import("../Pages/Landing"));
 const Login = lazy(() => import("../Pages/Login"));
 const SignUp = lazy(() => import("../Pages/SignUp"));
@@ -47,6 +48,14 @@ const routs = [
       {
         path: "/result",
         element: <Result />,
+      },
+      {
+        path: "/my-exams",
+        element: (
+          <Private>
+            <UserExams />
+          </Private>
+        ),
       },
       {
         path: "*",

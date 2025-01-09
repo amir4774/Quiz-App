@@ -98,7 +98,7 @@ const Navbar = () => {
 
             <ChangeLang />
 
-            <UserExamsButton />
+            {userName && <UserExamsButton variant="outlined" />}
 
             {userName ? (
               <LoginButton title="Logout" />
