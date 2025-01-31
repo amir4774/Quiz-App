@@ -28,12 +28,11 @@ const Submit = ({ open, setOpen }: SubmitType) => {
       setLoading(true);
 
       const values = {
-        rate: (result.correct / examParams.limit) * 100,
+        rate: Math.round((result.correct / examParams.limit) * 100),
         question_numbers: examParams.limit,
         category: examParams.category,
         difficulty: examParams.difficulty,
         corrects: result.correct,
-        examiner: 1,
       };
 
       await InternalApi().post("exam/", values);
