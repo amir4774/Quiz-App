@@ -23,7 +23,6 @@ const categories = [
   "Code",
   "Docker",
   "SQL",
-  "CMS",
   "Random",
 ];
 
@@ -60,7 +59,7 @@ const Category = ({ register, errors }: CategoryProps) => {
                       className={`check-box-${category}`}
                       onClick={() => handleClick(category)}
                       value={category}
-                      label={category}
+                      label={t(category)}
                       control={<Radio />}
                       {...register("category", {
                         required: "Please select a category",

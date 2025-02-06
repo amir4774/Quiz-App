@@ -1,9 +1,12 @@
 import axios from "axios";
-import { apiUrl } from "./config";
+import {apiKey, apiUrl} from "./config";
 
 const Api = () => {
   const axiosInstance = axios.create({
     baseURL: apiUrl,
+    headers: {
+      'X-Api-Key': apiKey
+    }
   });
 
   axiosInstance.interceptors.response.use(

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import useExamParams from "./useExamParams";
 import Api from "../Services/Api";
-import { apiKey } from "../Services/config";
 import { QuestionsType } from "../Components/Exam/Interfaces";
 
 const useQuize = () => {
@@ -17,7 +16,7 @@ const useQuize = () => {
         setIsError(false);
 
         const { data } = await Api().get(
-          `/questions?apiKey=${apiKey}&&category=${category}&&limit=${limit}&&difficulty=${difficulty}`
+          `/questions?category=${category}&&limit=${limit}&&difficulty=${difficulty}`
         );
         setQuestions(data);
       } catch {
