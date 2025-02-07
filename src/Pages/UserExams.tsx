@@ -3,6 +3,7 @@ import LoadingUserExams from "../Components/UserExams/LoadingUserExams";
 import UserExamsTitle from "../Components/UserExams/UserExamsTitle";
 import useUserExams from "../Hooks/useUserExams";
 import UserExamsMoreDetails from "../Components/UserExams/UserExamsMoreDetails";
+import LearnMore from "../Components/UserExams/LearnMore.tsx";
 
 const UserExams = () => {
   const { examsData, isLoading } = useUserExams();
@@ -26,6 +27,8 @@ const UserExams = () => {
                   corrects={exam.corrects}
                   question_numbers={exam.question_numbers}
                 />
+
+                  {exam.category !== "Random" && <LearnMore category={exam.category} />}
               </Box>
             </Grid>
           ))}

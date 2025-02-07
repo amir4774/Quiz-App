@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import InternalApi from "../Services/InternalApi";
 
 interface UserExams {
-  category: string;
+  category: 'Linux' | 'Code' | 'Docker' | 'DevOps' | 'SQL' | 'Random';
   corrects: number;
   difficulty: string;
   id: number;

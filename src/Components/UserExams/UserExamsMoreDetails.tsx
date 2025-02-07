@@ -1,44 +1,30 @@
-import { useState } from "react";
-import ExpandCircleDownSharpIcon from "@mui/icons-material/ExpandCircleDownSharp";
-import { Box, Button, Collapse } from "@mui/material";
-import useGlobalTranslation from "../../Hooks/useGlobalTranslation";
+import {useState} from "react";
+import {Box, Collapse} from "@mui/material";
 import UserExamsResult from "./UserExamsResult";
-import { UserExamsResultProps } from "./Interfaces";
+import {UserExamsResultProps} from "./Interfaces";
+import UserExamsCollapseButton from "./UserExamsCollapseButton.tsx";
 
 const UserExamsMoreDetails = ({
-  corrects,
-  question_numbers,
-}: UserExamsResultProps) => {
-  const [open, setOpen] = useState(false);
-  const { t } = useGlobalTranslation();
+                                  corrects,
+                                  question_numbers,
+                              }: UserExamsResultProps) => {
+    const [open, setOpen] = useState(false);
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+    const handleClick = () => {
+        setOpen(!open);
+    };
 
-  return (
-    <Box>
-      <Button
-        endIcon={
-          open ? (
-            <ExpandCircleDownSharpIcon sx={{ rotate: "180deg" }} />
-          ) : (
-            <ExpandCircleDownSharpIcon />
-          )
-        }
-        onClick={handleClick}
-        sx={{ color: "text.secondary" }}
-      >
-        {t("More Details")}
-      </Button>
-      <Collapse in={open} timeout="auto">
-        <UserExamsResult
-          corrects={corrects}
-          question_numbers={question_numbers}
-        />
-      </Collapse>
-    </Box>
-  );
+    return (
+        <Box mb={1}>
+            <UserExamsCollapseButton open={open} toggleOpen={handleClick} text='More Details'/>
+            <Collapse in={open} timeout="auto" sx={{pl: 1}}>
+                <UserExamsResult
+                    corrects={corrects}
+                    question_numbers={question_numbers}
+                />
+            </Collapse>
+        </Box>
+    );
 };
 
 export default UserExamsMoreDetails;
