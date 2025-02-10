@@ -11,7 +11,7 @@ const SignUp_Login_Logo = ({ logo }: SignUp_Login_Logo_Type) => {
       display={{ md: "flex", xs: "none" }}
       alignItems="center"
       width="100%"
-      height="100%"
+      minHeight="100%"
     >
       <Box component="img" mx="auto" src={logo} />
     </Box>

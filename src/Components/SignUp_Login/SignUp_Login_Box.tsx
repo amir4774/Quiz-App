@@ -5,12 +5,12 @@ const SignUp_Login_Box = ({ children }: { children: JSX.Element[] }) => {
     <Box
       borderRadius="10px"
       width={{ md: "70%", xs: "90%" }}
-      height="500px"
+      minHeight="500px"
       mx="auto"
       boxShadow={5}
       display="flex"
       justifyContent="space-between"
-      alignItems="center"
+      alignItems="stretch"
       position="relative"
     >
       {children}
