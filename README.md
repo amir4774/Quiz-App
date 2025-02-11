@@ -48,22 +48,7 @@ Follow these steps to set up the project locally:
     ```bash
     npm install
     ```
-4. Activate
-    ```bash
-    env\Scripts\activate
-    ```
-    
-5. Install requirements
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-6. Run server
-    ```bash
-    python manage.py runserver
-    ```
-    
-7. Start the development server:
+4. Start the development server:
     ```bash
     npm run dev
     ```
