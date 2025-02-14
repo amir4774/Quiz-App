@@ -12,7 +12,7 @@ const UserExams = () => {
 
   return (
     <section>
-      <Box width="90%" mx="auto">
+      <Box width="90%" mx="auto" mb={2}>
         <Grid container spacing={3} alignSelf={'stretch'}>
           {examsData.map((exam) => (
             <Grid item xs={12} md={4} key={exam.id}>
